@@ -76,4 +76,6 @@ int main()
         std::function<void(TestClass&, int)> EventFunc3 = &TestClass::mFunc1;
         EventFunc3(testClass,555);
     }
+
+    //참고자료 https://chipmaker.tistory.com/entry/stdfunction-%EC%A0%95%EB%A6%AC
 }
