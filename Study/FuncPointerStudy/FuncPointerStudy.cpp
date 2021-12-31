@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <functional>
 
 class TestClass
@@ -77,5 +77,5 @@ int main()
         EventFunc3(testClass,555);
     }
 
-    //참고자료 https://chipmaker.tistory.com/entry/stdfunction-%EC%A0%95%EB%A6%AC
+    /*참고자료 https ://chipmaker.tistory.com/entry/stdfunction-%EC%A0%95%EB%A6%AC*/
 }

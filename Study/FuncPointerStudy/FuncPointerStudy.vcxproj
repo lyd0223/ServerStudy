@@ -24,6 +24,7 @@
     <ProjectGuid>{73a1cc20-af6d-4e6d-9ff0-a2c55211a530}</ProjectGuid>
     <RootNamespace>FuncPointerStudy</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>01FuncPointerStudy</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
