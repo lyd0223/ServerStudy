@@ -1,9 +1,9 @@
 #pragma once
 
 /*
-Usage		:  모든 클래스 기본.  
+Usage		:  테스트 클래스
 Category	:  Object 
-Description :  오브젝트 상속용.
+Description :  테스트용 클래스.
 */
 
 class TestClass

@@ -7,12 +7,12 @@ int main()
 {
 	TestClass* testClass = nullptr;
 
-	std::cout << "한글" << std::endl;
+	std::cout << "Test" << std::endl;
 	
 
 	if (!testClass->IsValid())
 	{
-		GameServerDebug::AssertDebugMsg("에러에러!");
+		GameServerDebug::AssertDebugMsg("TestError!");
 		
 	}
 }

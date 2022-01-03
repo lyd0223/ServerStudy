@@ -1,9 +1,10 @@
 #pragma once
 #include <string>
 /*
-Usage		:  모든 클래스 기본.  
-Category	:  Object 
-Description :  오브젝트 상속용.
+Usage		:  디버그용
+Category	:  Debug
+Description :  디버그 용도 클래스. 
+			   로그띄워주는역할.
 */
 
 class GameServerDebug
