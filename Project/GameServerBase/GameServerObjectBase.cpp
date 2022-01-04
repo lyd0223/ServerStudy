@@ -3,8 +3,10 @@
 
 
 GameServerObjectBase::GameServerObjectBase()
+	: m_Parent(nullptr)
 {
-
+	// initilize vector capacity
+	m_LinkObjectList.reserve(10);
 }
 
 GameServerObjectBase::~GameServerObjectBase()
