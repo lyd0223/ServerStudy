@@ -17,6 +17,11 @@ GameServerThread::GameServerThread(GameServerThread&& _Other) noexcept
 
 }
 
+void GameServerThread::ThreadNameSetting(const wchar_t* _Name)
+{
+	SetThreadDescription(GetCurrentThread(), _Name);
+}
+
 bool GameServerThread::IsValid()
 {
 	if (this == nullptr)

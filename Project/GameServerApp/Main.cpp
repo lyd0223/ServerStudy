@@ -10,6 +10,7 @@ GameServerIOCP IOCP1;
 
 void Func0(std::shared_ptr<GameServerThreadWorker> _Worker)
 {
+	SetThreadDescription(GetCurrentThread(), L"NoName");
 	while (1)
 	{
 		_Worker->Wait();
@@ -45,6 +46,7 @@ int main()
 	
 	IOCP0.Initialize(Func0, INFINITE , 1);
 	IOCP1.Initialize(Func1, 10, 10);
+
 
 
 	while (true)

@@ -70,9 +70,15 @@ void GameServerIOCP::Initialize(std::function<void(std::shared_ptr<GameServerThr
 void GameServerIOCP::AddThread(std::function<void(std::shared_ptr<GameServerThreadWorker>)> _Func, DWORD _Time)
 {
 	m_LockMutex.lock();
+
 	std::shared_ptr<GameServerThreadWorker> Worker = std::make_shared<GameServerThreadWorker>(m_IOCPHandle, m_ThreadWorkerList.size(), _Time);
 	m_ThreadWorkerList.push_back(Worker);
-	m_ThreadList.push_back(std::make_shared<GameServerThread>(_Func, Worker));
+
+	std::shared_ptr<GameServerThread> Thread = std::make_shared<GameServerThread>(_Func, Worker);
+	Thread->ThreadNameSetting(L"ddd");
+	
+	m_ThreadList.push_back(Thread);
+
 	m_LockMutex.unlock(); 
 }
 

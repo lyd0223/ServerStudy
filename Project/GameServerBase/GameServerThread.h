@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <thread>
 #include <Windows.h>
 
@@ -32,5 +32,6 @@ private: //Member Value
 	
 public:  //Member Function
 	bool IsValid();
+	void ThreadNameSetting(const wchar_t* _Name);
 };
 

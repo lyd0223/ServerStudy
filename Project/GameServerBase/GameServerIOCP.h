@@ -39,7 +39,7 @@ public:
 	{
 		return m_Index;
 	}
-
+	
 
 public:
 	template<class ConvertType>
