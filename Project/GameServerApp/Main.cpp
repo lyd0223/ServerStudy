@@ -8,17 +8,6 @@
 GameServerIOCP IOCP0;
 GameServerIOCP IOCP1;
 
-void Func0(std::shared_ptr<GameServerThreadWorker> _Worker)
-{
-	SetThreadDescription(GetCurrentThread(), L"NoName");
-	while (1)
-	{
-		_Worker->Wait();
-		const char* str = _Worker->ConvertCompletionKey<const char*>();
-		
-		std::cout << str << std::endl;
-	}
-}
 void Func1(std::shared_ptr<GameServerThreadWorker> _Worker)
 {
 	while (1)
@@ -30,7 +19,8 @@ void Func1(std::shared_ptr<GameServerThreadWorker> _Worker)
 		case IOCPWaitReturnType::RETURN_TIMEOUT:
 		{
 			const char* str = "Test String";
-			IOCP0.Post(0, reinterpret_cast<ULONG_PTR>(str));
+			GameServerDebug::ErrorLogMsg(str);
+			
 			break;
 		}
 		case IOCPWaitReturnType::RETURN_POST:
@@ -44,8 +34,9 @@ void Func1(std::shared_ptr<GameServerThreadWorker> _Worker)
 int main()
 {
 	
-	IOCP0.Initialize(Func0, INFINITE , 1);
-	IOCP1.Initialize(Func1, 10, 10);
+	GameServerDebug::Init();
+
+	IOCP1.Init(Func1, 10, 10);
 
 
 

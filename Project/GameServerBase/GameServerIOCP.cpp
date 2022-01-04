@@ -31,7 +31,7 @@ IOCPWaitReturnType GameServerThreadWorker::Wait()
 
 GameServerIOCP::GameServerIOCP(std::function<void(std::shared_ptr<GameServerThreadWorker>)> _Func, DWORD _Time ,int _ThreadCount)
 {
-	Initialize(_Func, _Time, _ThreadCount);
+	Init(_Func, _Time, _ThreadCount);
 }
 
 GameServerIOCP::~GameServerIOCP()
@@ -45,7 +45,7 @@ GameServerIOCP::GameServerIOCP(GameServerIOCP&& _Other) noexcept
 }
 
 
-void GameServerIOCP::Initialize(std::function<void(std::shared_ptr<GameServerThreadWorker>)> _Func, DWORD _Time, int _ThreadCount)
+void GameServerIOCP::Init(std::function<void(std::shared_ptr<GameServerThreadWorker>)> _Func, DWORD _Time, int _ThreadCount)
 {
 	if (_ThreadCount > 128)
 	{

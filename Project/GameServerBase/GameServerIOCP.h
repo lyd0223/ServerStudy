@@ -39,9 +39,11 @@ public:
 	{
 		return m_Index;
 	}
-	
+	DWORD GetNumberOfBytesTransferred()
+	{
+		return m_NumberOfBytesTransferred;
+	}
 
-public:
 	template<class ConvertType>
 	ConvertType ConvertCompletionKey()
 	{
@@ -74,7 +76,7 @@ private: //Member Value
 	std::vector<std::shared_ptr<GameServerThreadWorker>> m_ThreadWorkerList;
 
 public:
-	void Initialize(std::function<void(std::shared_ptr<GameServerThreadWorker>)> _Func, DWORD _Time, int _ThreadCount);
+	void Init(std::function<void(std::shared_ptr<GameServerThreadWorker>)> _Func, DWORD _Time, int _ThreadCount);
 
 private:
 	void AddThread(std::function<void(std::shared_ptr<GameServerThreadWorker>)> _Func, DWORD _Time);
