@@ -61,7 +61,7 @@ void GameServerIOCP::Initialize(std::function<void(std::shared_ptr<GameServerThr
 
 	m_IOCPHandle = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, NULL, _ThreadCount);
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < _ThreadCount; i++)
 	{
 		AddThread(_Func, _Time);
 	}

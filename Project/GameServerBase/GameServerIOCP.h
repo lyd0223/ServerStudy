@@ -55,6 +55,7 @@ public:
 class GameServerIOCP
 {
 public: //Default
+	GameServerIOCP() {};
 	GameServerIOCP(std::function<void(std::shared_ptr<GameServerThreadWorker>)> _Func, DWORD _Time, int _ThreadCount);
 	~GameServerIOCP();
 
@@ -77,6 +78,8 @@ public:
 
 private:
 	void AddThread(std::function<void(std::shared_ptr<GameServerThreadWorker>)> _Func, DWORD _Time);
+	
+public:
 	void Post(DWORD _DOWRDData, ULONG_PTR _ULONGPTRData);
 public:  //Member Function
 	bool IsValid();
