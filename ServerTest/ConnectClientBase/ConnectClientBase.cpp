@@ -23,12 +23,10 @@ int main()
 	}
 
 	SOCKADDR_IN ServerAddr = { 0, };
-
 	ServerAddr.sin_family = AF_INET;
-
 	ServerAddr.sin_port = htons(30001);
 
-	if (inet_pton(AF_INET, "0.0.0.0", &ServerAddr.sin_addr) == SOCKET_ERROR)
+	if (inet_pton(AF_INET, "127.0.0.1", &ServerAddr.sin_addr) == SOCKET_ERROR)
 	{
 		return 0;
 
@@ -44,10 +42,9 @@ int main()
 	std::cout << "Any key to connect" << std::endl;
 	_getch();
 
-	SOCKADDR_IN UserAddr = { 0, };
-	int Len = sizeof(SOCKADDR_IN);
 
-	if (connect(ConnectSocket, (sockaddr*)&UserAddr, Len) == SOCKET_ERROR)
+	int Len = sizeof(SOCKADDR_IN);
+	if (connect(ConnectSocket, (sockaddr*)&ServerAddr, Len) == SOCKET_ERROR)
 	{
 		return 0;
 	}

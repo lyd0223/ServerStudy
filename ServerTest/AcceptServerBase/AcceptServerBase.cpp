@@ -1,4 +1,6 @@
-﻿#include <iostream>
+﻿//내꺼내꺼!
+
+#include <iostream>
 #include <conio.h>
 
 // 윈도우에서 소켓함수를 이용할때 쓰는 헤더
@@ -52,7 +54,7 @@ int main()
 		return 0;
 	}
 	
-	if (bind(ServerSocket, (const sockaddr*)&ServerAddr, sizeof(SOCKADDR_IN) == SOCKET_ERROR))
+	if (bind(ServerSocket, (const sockaddr*)&ServerAddr, sizeof(SOCKADDR_IN)) == SOCKET_ERROR)
 	{
 		return 0;
 	}
@@ -66,10 +68,11 @@ int main()
 	int Len = sizeof(SOCKADDR_IN);
 	//접속을 기다린다.
     SOCKET UserSocket =	accept(ServerSocket,(sockaddr*)&UserAddr, &Len);
-	if (ServerSocket != INVALID_SOCKET)
+	if (UserSocket == INVALID_SOCKET)
 	{
-
+		return 0;
 	}
+	std::cout << "Someone connected" << std::endl;
 
 	_getch();
 	
