@@ -40,6 +40,7 @@ int main()
 
 	}
 
+	//								ip주소체계, TCP , TCP
 	SOCKET ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 	if (ConnectSocket == INVALID_SOCKET)

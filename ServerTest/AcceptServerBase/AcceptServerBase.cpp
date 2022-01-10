@@ -26,7 +26,7 @@ int main()
 	// 소켓통신을 위한 주소정보를 담는 구조체.
 	SOCKADDR_IN ServerAddr = { 0, };
 
-	// IPv4를 이용하겠다.
+	// IPv4 주소체계 이용하겠다.
 	ServerAddr.sin_family = AF_INET;
 	
 	// ip주소로 내컴퓨터까지는 올 수 있지만,
@@ -59,6 +59,7 @@ int main()
 		return 0;
 	}
 
+	//백로그 크기 설정.
 	if (listen(ServerSocket, 512) == SOCKET_ERROR)
 	{
 		return 0;
