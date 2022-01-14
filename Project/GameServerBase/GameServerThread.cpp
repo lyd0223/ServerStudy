@@ -17,9 +17,16 @@ GameServerThread::GameServerThread(GameServerThread&& _Other) noexcept
 
 }
 
-void GameServerThread::ThreadNameSetting(const wchar_t* _Name)
+void GameServerThread::Join()
 {
-	SetThreadDescription(GetCurrentThread(), _Name);
+	m_Thread.join();
+}
+
+void GameServerThread::ThreadNameSetting(const std::string& _Name)
+{
+	std::wstring wstr;
+	wstr.assign(_Name.begin(), _Name.end());
+	SetThreadDescription(GetCurrentThread(), wstr.c_str());
 }
 
 bool GameServerThread::IsValid()
