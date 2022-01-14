@@ -33,7 +33,7 @@ void GameServerDebug::LogFunc(std::shared_ptr<GameServerThreadWorker> _Worker)
 			return;
 		}
 
-		std::unique_ptr<LogInfo> Info = std::unique_ptr<LogInfo>(_Worker->ConvertCompletionKey<LogInfo*>());
+		std::unique_ptr<LogInfo> Info = std::unique_ptr<LogInfo>(_Worker->GetConvertCompletionKey<LogInfo*>());
 	
 		std::string TypeText = "";
 		switch (Info->m_Type)
@@ -98,4 +98,26 @@ void GameServerDebug::WarningLogMsg(const std::string& _Text)
 void GameServerDebug::InfoLogMsg(const std::string& _Text)
 {
 	LogMsg(LogType::LOGTYPE_INFO, _Text);
+}
+
+
+void GameServerDebug::PrintLastError()
+{
+	DWORD ErrorCode = GetLastError();
+	
+	char* msg = nullptr;
+	FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER,
+		nullptr,
+		ErrorCode,
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+		msg,
+		0,
+		nullptr);
+	if (msg != nullptr)
+	{
+		printf_s("ErrorCode : %d \nErrorMsg : %s", ErrorCode, msg);
+		LocalFree(msg);
+	}
+
+
 }

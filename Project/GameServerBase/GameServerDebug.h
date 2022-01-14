@@ -54,5 +54,7 @@ public:  //Member Function
 	static void WarningLogMsg(const std::string& _Text);
 	static void InfoLogMsg(const std::string& _Text);
 
+	static void PrintLastError();
+	
 };
 
