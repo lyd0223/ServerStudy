@@ -45,7 +45,7 @@ public:
 	}
 
 	template<class ConvertType>
-	ConvertType ConvertCompletionKey()
+	ConvertType GetConvertCompletionKey()
 	{
 		return reinterpret_cast<ConvertType>(m_CompletionKey);
 	}

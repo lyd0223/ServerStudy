@@ -75,7 +75,7 @@ void GameServerIOCP::AddThread(std::function<void(std::shared_ptr<GameServerThre
 	m_ThreadWorkerList.push_back(Worker);
 
 	std::shared_ptr<GameServerThread> Thread = std::make_shared<GameServerThread>(_Func, Worker);
-	Thread->ThreadNameSetting(L"ddd");
+	GameServerThread::ThreadNameSetting("ddd");
 	
 	m_ThreadList.push_back(Thread);
 
