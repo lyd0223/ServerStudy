@@ -20,8 +20,23 @@ public: // Member Var
 	static bool UniCodeToUTF8(const std::wstring& _Unicode, std::string& _UTF8);
 
 	static bool UTF8ToAnsi(const std::string& _UTF8, std::string& _Ansi);
+	static std::string UTF8ToAnsi(const std::string& _UTF8);
 	static bool AnsiToUTF8(const std::string& _Ansi, std::string& _UTF8);
 
+
+	static std::vector<std::string> Split(const std::string& _Input, char _Delimiter);
+
+	static void Replace(std::string& _Text, const std::string& _Prev, const std::string& _Next, int _Count = 1);
+
+	static void Insert(std::string& _Text, int _Index, const std::string& _InsertText);
+
+	static void TrimRemove(std::string& _Text);
+
+	static void ToUpper(std::string& _Text);
+
+	static void Remove(std::string& _Text, const std::string& _DeleteText);
+
+	static void ClearText(std::string& _Text);
 
 public: // Default
 	GameServerString();
