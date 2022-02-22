@@ -7,7 +7,7 @@
     <ClInclude Include="ThreadMessageBase.h">
       <Filter>Messages</Filter>
     </ClInclude>
-    <ClInclude Include="ThreadLoginMessage.h">
+    <ClInclude Include="ThreadHandlerLoginMessage.h">
       <Filter>Messages\Login</Filter>
     </ClInclude>
     <ClInclude Include="DBQueue.h">
@@ -15,6 +15,9 @@
     </ClInclude>
     <ClInclude Include="NetQueue.h">
       <Filter>Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerDispatcher.h">
+      <Filter>Messages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -25,7 +28,7 @@
     <ClCompile Include="ThreadMessageBase.cpp">
       <Filter>Messages</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadLoginMessage.cpp">
+    <ClCompile Include="ThreadHandlerLoginMessage.cpp">
       <Filter>Messages\Login</Filter>
     </ClCompile>
     <ClCompile Include="DBQueue.cpp">

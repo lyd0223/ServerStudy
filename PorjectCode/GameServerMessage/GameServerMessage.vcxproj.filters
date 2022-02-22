@@ -4,7 +4,6 @@
     <ClInclude Include="PreCompile.h">
       <Filter>PreCompile</Filter>
     </ClInclude>
-    <ClInclude Include="Dispatcher.h" />
     <ClInclude Include="MessageConverter.h" />
     <ClInclude Include="ClientToServer.h">
       <Filter>Messages</Filter>
@@ -20,13 +19,14 @@
     </ClInclude>
     <ClInclude Include="MessageTypeEnum.h" />
     <ClInclude Include="Messages.h" />
+    <ClInclude Include="Dispatcher.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
       <Filter>PreCompile</Filter>
     </ClCompile>
-    <ClCompile Include="Dispatcher.cpp" />
     <ClCompile Include="MessageConverter.cpp" />
+    <ClCompile Include="Dispatcher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">

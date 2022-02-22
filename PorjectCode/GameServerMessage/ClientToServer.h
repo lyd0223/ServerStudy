@@ -9,7 +9,7 @@ public:
                                                                 
 public:                                                         
     LoginMessage()                                               
-        : GameServerMessage(MessageType::Login)                    
+        : GameServerMessage(EMessageType::Login)                    
         , m_ID()
         , m_PW()
     {                                                           

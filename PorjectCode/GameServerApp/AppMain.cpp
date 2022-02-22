@@ -16,30 +16,13 @@
 #include <GameServerNet/TCPSession.h>
 #include <GameServerNet/ServerHelper.h>
 
-#include <GameServerMessage/GameServerMessages.h>
+#include <GameServerMessage/GameServerMessage.h>
 #include <GameServerMessage/Dispatcher.h>
 #include <GameServerMessage/MessageConverter.h>
 
-#include "ThreadLoginMessage.h"
 #include "NetQueue.h"
 #include "DBQueue.h"
-
-template<class ThreadMessage, class MessageType>
-void OnMessageProcess(std::shared_ptr<TCPSession> _Session, std::shared_ptr<Message> _Message)
-{
-	std::shared_ptr<MessageType> ConvertMessage = std::dynamic_pointer_cast<MessageType>(_Message);
-	
-	if (ConvertMessage == nullptr)
-	{
-		GameServerDebug::LogError("LoginMessage Convert Error");
-		return;
-	}
-	
-	std::shared_ptr<ThreadMessage> cmd = std::make_shared<ThreadMessage>(_Session, ConvertMessage);
-	cmd->Start();
-}
-
-Dispatcher<TCPSession> gDispatcher;
+#include "ServerDispatcher.h"
 
 int main() 
 {
@@ -48,8 +31,8 @@ int main()
 	NetQueue::Initialize();
 	DBQueue::Initialize();
 
-	gDispatcher.AddHandler(static_cast<uint32_t>(EMessageType::Login), std::bind(&OnMessageProcess<ThreadLoginMessage,LoginMessage>, std::placeholders::_1, std::placeholders::_2));
-	
+	DispatcherRegistration();
+
 	ServerHelper::StartEngineStartUp();
 	GameServerDebug::Initialize();
 
