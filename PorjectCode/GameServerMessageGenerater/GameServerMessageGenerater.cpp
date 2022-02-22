@@ -93,7 +93,7 @@ void MessageHeaderCreate(std::vector<MessageInfo>& _Collection, const std::strin
 		MessageText += "                                                                \n";
 		MessageText += "public:                                                         \n";
 		MessageText += "    " + _Collection[i].Name + "Message()                                               \n";
-		MessageText += "        : GameServerMessage(MessageType::" + _Collection[i].Name + ")                    \n";
+		MessageText += "        : GameServerMessage(EMessageType::" + _Collection[i].Name + ")                    \n";
 		for (size_t m = 0; m < MemberList.size(); m++)
 		{
 			MessageText += "        , " + MemberList[m].Name + "()\n";

@@ -15,7 +15,6 @@ private:
 	
 public: //Default
 	MessageConverter(const std::vector<unsigned char>& _Buffer);
-	~MessageConverter();
 
 	EMessageType GetMessageType()
 	{

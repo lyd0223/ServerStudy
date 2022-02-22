@@ -8,7 +8,7 @@ public:
                                                                 
 public:                                                         
     LoginResultMessage()                                               
-        : GameServerMessage(MessageType::LoginResult)                    
+        : GameServerMessage(EMessageType::LoginResult)                    
         , m_LoginResultType()
     {                                                           
                                                                 
@@ -42,7 +42,7 @@ public:
                                                                 
 public:                                                         
     ServerDestroyMessage()                                               
-        : GameServerMessage(MessageType::ServerDestroy)                    
+        : GameServerMessage(EMessageType::ServerDestroy)                    
     {                                                           
                                                                 
     }                                                           
@@ -72,7 +72,7 @@ public:
                                                                 
 public:                                                         
     MonsterCreateMessage()                                               
-        : GameServerMessage(MessageType::MonsterCreate)                    
+        : GameServerMessage(EMessageType::MonsterCreate)                    
     {                                                           
                                                                 
     }                                                           

@@ -9,7 +9,7 @@ public:
                                                                 
 public:                                                         
     ChatMessage()                                               
-        : GameServerMessage(MessageType::Chat)                    
+        : GameServerMessage(EMessageType::Chat)                    
         , m_ID()
         , m_Message()
     {                                                           
