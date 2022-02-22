@@ -1,8 +1,6 @@
 #pragma once
-#include <thread>
-#include <tuple>
 #include "GameServerNameBase.h"
-
+#include <thread>
 // 용도 : 
 // 분류 :
 // 첨언 : 

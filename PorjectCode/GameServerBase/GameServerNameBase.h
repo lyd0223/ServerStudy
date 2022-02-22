@@ -1,7 +1,5 @@
 #pragma once
 #include "GameServerObjectBase.h"
-#include <string>
-
 // 용도 : 
 // 분류 :
 // 첨언 : 
@@ -12,7 +10,7 @@ private: // Member Var
 
 public:
 	virtual void SetName(const std::string&);
-
+	
 	std::string_view GetNameView();
 	std::string GetNameCopy();
 	const char* GetNamePtr();

@@ -46,6 +46,15 @@
     <ClInclude Include="GameServerSerializer.h">
       <Filter>Memory</Filter>
     </ClInclude>
+    <ClInclude Include="GameServerDirectory.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServerFile.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServerPath.h">
+      <Filter>IO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -93,6 +102,15 @@
     <ClCompile Include="GameServerSerializer.cpp">
       <Filter>Memory</Filter>
     </ClCompile>
+    <ClCompile Include="GameServerDirectory.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServerFile.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServerPath.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -115,6 +133,9 @@
     </Filter>
     <Filter Include="Memory">
       <UniqueIdentifier>{aa815633-7cf1-4d46-96a6-ef141a0deac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{02ad8b9b-3de1-4463-9285-81e1e8d1af00}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

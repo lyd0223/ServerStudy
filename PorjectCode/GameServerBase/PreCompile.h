@@ -33,7 +33,6 @@
 #include <functional>
 #include <assert.h>
 #include <crtdbg.h>
-#include <conio.h>
 
 
 #pragma comment (lib, "ws2_32") // 서버통신용 구현이 들어있는 라이브러리

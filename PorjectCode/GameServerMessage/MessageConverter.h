@@ -1,5 +1,6 @@
 #pragma once
-#include "GameServerMessages.h"
+
+#include "Messages.h"
 /*
 Usage		:  MessageConvert
 Category	:  
@@ -9,7 +10,7 @@ Description :  Message를 알맞는 자료형으로 Convert해줌.
 class MessageConverter
 {
 private:
-	std::shared_ptr<Message> m_Message;
+	std::shared_ptr<GameServerMessage> m_Message;
 	const std::vector<unsigned char>& m_Buffer;
 	
 public: //Default
@@ -26,7 +27,7 @@ public: //Default
 		return static_cast<uint32_t>(GetMessageType());
 	}
 
-	std::shared_ptr<Message> GetServerMessage()
+	std::shared_ptr<GameServerMessage> GetServerMessage()
 	{
 		return m_Message;
 	}

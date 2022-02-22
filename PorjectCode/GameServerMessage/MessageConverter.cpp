@@ -1,17 +1,14 @@
 #include "PreCompile.h"
 #include "MessageConverter.h"
-
-
-
-MessageConverter::MessageConverter(const std::vector<unsigned char>& _Buffer)
-	:m_Buffer(_Buffer)
+#include <memory>
+MessageConverter::MessageConverter(const std::vector<unsigned char>&_Buffer)
+	: m_Buffer(_Buffer)
 {
-	GameServerSerializer Serializer = GameServerSerializer(m_Buffer);
-	
-	EMessageType MessageType;
-	memcpy_s(&MessageType, sizeof(EMessageType), &m_Buffer[0], sizeof(EMessageType));
-	
-	switch (MessageType)
+	GameServerSerializer Sr = GameServerSerializer(m_Buffer);
+
+	EMessageType Type;
+	memcpy_s(&Type, sizeof(EMessageType), &m_Buffer[0], sizeof(EMessageType));
+	switch (Type)
 	{
 	case EMessageType::Login:
 		m_Message = std::make_shared<LoginMessage>();
@@ -19,14 +16,17 @@ MessageConverter::MessageConverter(const std::vector<unsigned char>& _Buffer)
 	case EMessageType::LoginResult:
 		m_Message = std::make_shared<LoginResultMessage>();
 		break;
-	default:
+	case EMessageType::ServerDestroy:
+		m_Message = std::make_shared<ServerDestroyMessage>();
 		break;
+	case EMessageType::MonsterCreate:
+		m_Message = std::make_shared<MonsterCreateMessage>();
+		break;
+	case EMessageType::Chat:
+		m_Message = std::make_shared<ChatMessage>();
+		break;
+	default:
+		return;
 	}
-
-	m_Message->DeSerialize(Serializer);
-
-}
-MessageConverter::~MessageConverter()
-{
-
+	m_Message->DeSerialize(Sr);
 }

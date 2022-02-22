@@ -1,8 +1,7 @@
-#include <iostream>
-#include <GameServerBase/GameServerDebug.h>
 #include <GameServerBase/GameServerFile.h>
 #include <GameServerBase/GameServerDirectory.h>
 #include <GameServerBase/GameServerString.h>
+#include <GameServerBase/GameServerDebug.h>
 
 #pragma comment(lib, "GameServerBase.lib")
 
@@ -35,7 +34,7 @@ void SerializerTypeCheck(std::string& _Text, MemberInfo& _MemberInfo)
 	{
 		if (_MemberInfo.Type[0] == 'E')
 		{
-			_Text += "        _Serializer.WriteEnum(" + _MemberInfo.Name + ");\n";
+			_Text += "        _Serializer<<static_cast<int>(" + _MemberInfo.Name + ");\n";
 		}
 		else
 		{
@@ -58,18 +57,18 @@ void DeSerializerTypeCheck(std::string& _Text, MemberInfo& _MemberInfo)
 	{
 		if (_MemberInfo.Type[0] == 'E')
 		{
-			_Text += "        _Serializer.ReadEnum(" + _MemberInfo.Name + ");\n";
+			_Text += "        _Serializer>>static_cast<int>(" + _MemberInfo.Name + ");\n";
 		}
 		else
 		{
-			GameServerDebug::AssertDebugMsg("파악할수 없는 타입이 체크되었습니다. Name : " + _MemberInfo.Name + " Type : " + _MemberInfo.Type);
+			//GameServerDebug::AssertDebugMsg("파악할수 없는 타입이 체크되었습니다. Name : " + _MemberInfo.Name + " Type : " + _MemberInfo.Type);
 		}
 	}
 }
 
 
 
-void MessageHeaderCreate(std::vector<MessageInfo>& _Collection, const std::string Path)
+void MessageHeaderCreate(std::vector<MessageInfo>& _Collection, const std::string _Path)
 {
 	std::string MessageText;
 
@@ -94,7 +93,7 @@ void MessageHeaderCreate(std::vector<MessageInfo>& _Collection, const std::strin
 		MessageText += "                                                                \n";
 		MessageText += "public:                                                         \n";
 		MessageText += "    " + _Collection[i].Name + "Message()                                               \n";
-		MessageText += "        : GameServerMessage(MessageId::" + _Collection[i].Name + ")                    \n";
+		MessageText += "        : GameServerMessage(MessageType::" + _Collection[i].Name + ")                    \n";
 		for (size_t m = 0; m < MemberList.size(); m++)
 		{
 			MessageText += "        , " + MemberList[m].Name + "()\n";
@@ -146,13 +145,13 @@ void MessageHeaderCreate(std::vector<MessageInfo>& _Collection, const std::strin
 		MessageText += "\n";
 	}
 
-	GameServerFile SaveFile = GameServerFile{ Path, "wt" };
+	GameServerFile SaveFile = GameServerFile{ _Path, "wt" };
 	SaveFile.Write(MessageText.c_str(), MessageText.size());
 }
 
-void MessageReflection(std::vector<MessageInfo>& _Collection, const std::string& Code)
+void MessageReflection(std::vector<MessageInfo>& _Collection, const std::string& _Code)
 {
-	std::vector<std::string> ClientMessageString = GameServerString::split(Code, '|');
+	std::vector<std::string> ClientMessageString = GameServerString::Split(_Code, '|');
 	for (size_t i = 0; i < ClientMessageString.size(); i++)
 	{
 		if (ClientMessageString[i] == "")
@@ -160,7 +159,7 @@ void MessageReflection(std::vector<MessageInfo>& _Collection, const std::string&
 			continue;
 		}
 
-		std::vector<std::string> MemberAndName = GameServerString::split(ClientMessageString[i], '-');
+		std::vector<std::string> MemberAndName = GameServerString::Split(ClientMessageString[i], '-');
 
 		std::string& Name = MemberAndName[0];
 
@@ -177,7 +176,7 @@ void MessageReflection(std::vector<MessageInfo>& _Collection, const std::string&
 		std::string& MmeberInfo = MemberAndName[1];
 
 
-		std::vector<std::string> Members = GameServerString::split(MmeberInfo, ';');
+		std::vector<std::string> Members = GameServerString::Split(MmeberInfo, ';');
 
 		for (size_t i = 0; i < Members.size(); i++)
 		{
@@ -192,7 +191,7 @@ void MessageReflection(std::vector<MessageInfo>& _Collection, const std::string&
 				continue;
 			}
 
-			std::vector<std::string> TypeAndName = GameServerString::split(NewInfo.MemberText, ' ');
+			std::vector<std::string> TypeAndName = GameServerString::Split(NewInfo.MemberText, ' ');
 
 			NewInfo.Type = TypeAndName[0];
 			NewInfo.Name = TypeAndName[1];
@@ -217,7 +216,7 @@ int main()
 	{
 		GameServerDirectory LoadDir;
 		LoadDir.MoveParent("PorjectCode");
-		LoadDir.MoveChild("GameServerMessage\\Info");
+		LoadDir.MoveChild("GameServerMessage\\MessageGenerateTXTFiles");
 		{
 			GameServerFile LoadFile = { LoadDir.PathToPlusFileName("MessageClient.txt"), "rt" };
 			std::string Code = LoadFile.GetString();
@@ -268,7 +267,7 @@ int main()
 			FileDir.MoveParent("PorjectCode");
 			FileDir.MoveChild("GameServerMessage");
 
-			std::string EnumFileText = "#pragma once\n\nenum class MessageId \n{\n";
+			std::string EnumFileText = "#pragma once\n\nenum class EMessageType \n{\n";
 
 			for (size_t i = 0; i < AllMessage.size(); i++)
 			{
@@ -280,7 +279,7 @@ int main()
 			EnumFileText += "\n";
 			EnumFileText += "};";
 
-			std::string SavePath = FileDir.PathToPlusFileName("MessageIdEnum.h");
+			std::string SavePath = FileDir.PathToPlusFileName("MessageTypeEnum.h");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
 			SaveFile.Write(EnumFileText.c_str(), EnumFileText.size());
 			///////////////////////////////////////////////////////////////////////////////
@@ -295,23 +294,23 @@ int main()
 			std::string ConvertFileText = "#include \"PreCompile.h\"\n";
 			ConvertFileText += "#include \"MessageConverter.h\"\n";
 			ConvertFileText += "#include <memory>\n";
-			ConvertFileText += "MessageConverter::MessageConverter(const std::vector<unsigned char>&_buffer)\n";
-			ConvertFileText += "\t: buffer_(_buffer)\n";
+			ConvertFileText += "MessageConverter::MessageConverter(const std::vector<unsigned char>&_Buffer)\n";
+			ConvertFileText += "\t: m_Buffer(_Buffer)\n";
 			ConvertFileText += "{\n";
-			ConvertFileText += "\tGameServerSerializer Sr = GameServerSerializer(buffer_);\n";
+			ConvertFileText += "\tGameServerSerializer Sr = GameServerSerializer(m_Buffer);\n";
 			ConvertFileText += "\n";
-			ConvertFileText += "\tMessageId Type;\n";
-			ConvertFileText += "\tmemcpy_s(&Type, sizeof(MessageId), &buffer_[0], sizeof(MessageId));\n";
+			ConvertFileText += "\tEMessageType Type;\n";
+			ConvertFileText += "\tmemcpy_s(&Type, sizeof(EMessageType), &m_Buffer[0], sizeof(EMessageType));\n";
 			ConvertFileText += "\tswitch (Type)\n\t{\n";
 
 			for (size_t i = 0; i < AllMessage.size(); i++)
 			{
-				ConvertFileText += "\tcase MessageId::" + AllMessage[i].Name + ":\n";
-				ConvertFileText += "\t\tMessage_ = std::make_shared<" + AllMessage[i].Name + "Message>();\n";
+				ConvertFileText += "\tcase EMessageType::" + AllMessage[i].Name + ":\n";
+				ConvertFileText += "\t\tm_Message = std::make_shared<" + AllMessage[i].Name + "Message>();\n";
 				ConvertFileText += "\t\tbreak;\n";
 			}
 
-			ConvertFileText += "\tdefault:\n\t\treturn;\n\t}\n\tMessage_->DeSerialize(Sr);\n}";
+			ConvertFileText += "\tdefault:\n\t\treturn;\n\t}\n\tm_Message->DeSerialize(Sr);\n}";
 
 			std::string SavePath = FileDir.PathToPlusFileName("MessageConverter.cpp");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
@@ -339,18 +338,18 @@ int main()
 			std::string DisText;
 
 			DisText += "#include \"PreCompile.h\"																																							\n";
-			DisText += "#include \"ServerDiapatchar.h\"																																						\n";
+			DisText += "#include \"ServerDispatcher.h\"																																						\n";
 			DisText += "#include <GameServerBase\\GameServerDebug.h>																																			\n";
 			DisText += "																																													\n";
 			DisText += "#include \"ThreadHandlerLoginMessage.h\"																																			\n";
 			DisText += "#include \"ThreadHandlerChatMessage.h\"																																				\n";
 			DisText += "																																													\n";
-			DisText += "Diapatchar<TCPSession> Dis;																																							\n";
+			DisText += "Dispatcher<TCPSession> Dis;																																							\n";
 			DisText += "																																													\n";
-			DisText += "template<typename MessageHandler, typename MessageType>																																\n";
+			DisText += "template<typename MessageHandler, typename EMessageType>																																\n";
 			DisText += "void OnMessageProcess(std::shared_ptr<TCPSession> _Session, std::shared_ptr<GameServerMessage> _Message)																			\n";
 			DisText += "{																																													\n";
-			DisText += "	std::shared_ptr<MessageType> ConvertMessage = std::dynamic_pointer_cast<MessageType>(_Message);																					\n";
+			DisText += "	std::shared_ptr<EMessageType> ConvertMessage = std::dynamic_pointer_cast<EMessageType>(_Message);																					\n";
 			DisText += "	if (nullptr == ConvertMessage)																																					\n";
 			DisText += "	{																																												\n";
 			DisText += "		GameServerDebug::LogError(\"ConvertError\");																																\n";
@@ -361,20 +360,20 @@ int main()
 			DisText += "	Cmd->Start();																																									\n";
 			DisText += "}																																													\n";
 			DisText += "																																													\n";
-			DisText += "void DiapatcharRegistration()																																						\n";
+			DisText += "void DispatcherRegistration()																																						\n";
 			DisText += "{																																													\n";
 			for (size_t i = 0; i < ClientMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(static_cast<uint32_t>(MessageId::" + ClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ClientMessage[i].Name + "Message, " + ClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
+				DisText += "	Dis.AddHandler(static_cast<uint32_t>(EMessageType::" + ClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ClientMessage[i].Name + "Message, " + ClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
 			}
 
 			for (size_t i = 0; i < ServerClientMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(static_cast<uint32_t>(MessageId::" + ServerClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ServerClientMessage[i].Name + "Message, " + ServerClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
+				DisText += "	Dis.AddHandler(static_cast<uint32_t>(EMessageType::" + ServerClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ServerClientMessage[i].Name + "Message, " + ServerClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
 			}
 			DisText += "}																																													\n";
 
-			std::string SavePath = FileDir.PathToPlusFileName("ServerDiapatchar.cpp");
+			std::string SavePath = FileDir.PathToPlusFileName("ServerDispatcher.cpp");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
 			SaveFile.Write(DisText.c_str(), DisText.size());
 		}
@@ -386,6 +385,7 @@ int main()
 		//std::string ServerToClientText;
 	}
 
+	return 0;
 
 	/////////////////////////////////////////////////////////////// 언리얼로 수정 파일 이동.
 	{
@@ -486,10 +486,10 @@ int main()
 
 
 		{
-			GameServerFile LoadFile = { FileDir.PathToPlusFileName("MessageIdEnum.h"), "rt" };
+			GameServerFile LoadFile = { FileDir.PathToPlusFileName("MessageTypeEnum.h"), "rt" };
 			std::string Code = LoadFile.GetString();
 
-			std::string SavePath = SaveDir.PathToPlusFileName("MessageIdEnum.h");
+			std::string SavePath = SaveDir.PathToPlusFileName("MessageTypeEnum.h");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
 			SaveFile.Write(Code.c_str(), Code.size());
 		}
@@ -527,10 +527,10 @@ int main()
 			DisText += "#include \"ThreadHandlerChatMessage.h\"																			  \n";
 			DisText += "#include \"ThreadHandlerServerDestroyMessage.h\"																  \n";
 			DisText += "																												  \n";
-			DisText += "template<typename MessageHandler, typename MessageType>															  \n";
+			DisText += "template<class MessageHandler, class EMessageType>															  \n";
 			DisText += "void OnMessageProcess(std::shared_ptr<GameServerMessage> _Message, UClientGameInstance* _Inst, UWorld* _World)	  \n";
 			DisText += "{																												  \n";
-			DisText += "	std::shared_ptr<MessageType> ConvertMessage = std::static_pointer_cast<MessageType>(_Message);				  \n";
+			DisText += "	std::shared_ptr<EMessageType> ConvertMessage = std::static_pointer_cast<EMessageType>(_Message);				  \n";
 			DisText += "	if (nullptr == ConvertMessage)																				  \n";
 			DisText += "	{																											  \n";
 			DisText += "		return;																									  \n";
@@ -545,12 +545,12 @@ int main()
 			DisText += "{														\n";
 			for (size_t i = 0; i < ServerMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(static_cast<uint32_t>(MessageId::" + ServerMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ServerMessage[i].Name + "Message, " + ServerMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
+				DisText += "	Dis.AddHandler(static_cast<uint32_t>(EMessageType::" + ServerMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ServerMessage[i].Name + "Message, " + ServerMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
 			}
 
 			for (size_t i = 0; i < ServerClientMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(static_cast<uint32_t>(MessageId::" + ServerClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ServerClientMessage[i].Name + "Message, " + ServerClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
+				DisText += "	Dis.AddHandler(static_cast<uint32_t>(EMessageType::" + ServerClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ServerClientMessage[i].Name + "Message, " + ServerClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
 			}
 			DisText += "}																																													\n";
 

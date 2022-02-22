@@ -35,7 +35,7 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="GameServerOverlapped.h">
-      <Filter>IO</Filter>
+      <Filter>IOCP</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -67,7 +67,7 @@
       <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="GameServerOverlapped.cpp">
-      <Filter>IO</Filter>
+      <Filter>IOCP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,7 +86,7 @@
     <Filter Include="Base">
       <UniqueIdentifier>{e683928d-10f2-40aa-b2d9-aacfdd3b0b55}</UniqueIdentifier>
     </Filter>
-    <Filter Include="IO">
+    <Filter Include="IOCP">
       <UniqueIdentifier>{1d25ff23-9d69-4849-83d5-7f725ff34ba3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

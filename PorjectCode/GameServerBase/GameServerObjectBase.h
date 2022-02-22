@@ -1,6 +1,4 @@
 #pragma once
-#include <vector>
-#include <memory>
 // 용도 : 
 // 분류 :
 // 첨언 : 

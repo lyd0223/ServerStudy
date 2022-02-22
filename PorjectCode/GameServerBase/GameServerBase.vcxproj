@@ -26,6 +26,8 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="GameServerDebugReleasePool.h" />
+    <ClInclude Include="GameServerDirectory.h" />
+    <ClInclude Include="GameServerFile.h" />
     <ClInclude Include="GameServerIocp.h">
       <SubType>
       </SubType>
@@ -38,6 +40,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GameServerPath.h" />
     <ClInclude Include="GameServerQueue.h">
       <SubType>
       </SubType>
@@ -70,6 +73,8 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GameServerDebugReleasePool.cpp" />
+    <ClCompile Include="GameServerDirectory.cpp" />
+    <ClCompile Include="GameServerFile.cpp" />
     <ClCompile Include="GameServerIocp.cpp">
       <SubType>
       </SubType>
@@ -82,6 +87,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="GameServerPath.cpp" />
     <ClCompile Include="GameServerQueue.cpp">
       <SubType>
       </SubType>

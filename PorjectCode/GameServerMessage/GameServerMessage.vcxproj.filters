@@ -4,15 +4,27 @@
     <ClInclude Include="PreCompile.h">
       <Filter>PreCompile</Filter>
     </ClInclude>
-    <ClInclude Include="GameServerMessages.h" />
     <ClInclude Include="Dispatcher.h" />
     <ClInclude Include="MessageConverter.h" />
+    <ClInclude Include="ClientToServer.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerAndClient.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerToClient.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServerMessage.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageTypeEnum.h" />
+    <ClInclude Include="Messages.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
       <Filter>PreCompile</Filter>
     </ClCompile>
-    <ClCompile Include="GameServerMessages.cpp" />
     <ClCompile Include="Dispatcher.cpp" />
     <ClCompile Include="MessageConverter.cpp" />
   </ItemGroup>
@@ -23,5 +35,19 @@
     <Filter Include="Messages">
       <UniqueIdentifier>{376f69f9-9cbf-4046-8587-d6837e28d59a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MessageGenerateTxtFiles">
+      <UniqueIdentifier>{5d630249-c57b-46a0-858c-2c069d32b97e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Info\MessageClient.txt">
+      <Filter>MessageGenerateTxtFiles</Filter>
+    </Text>
+    <Text Include="Info\MessageServer.txt">
+      <Filter>MessageGenerateTxtFiles</Filter>
+    </Text>
+    <Text Include="Info\MessageServerAndClient.txt">
+      <Filter>MessageGenerateTxtFiles</Filter>
+    </Text>
   </ItemGroup>
 </Project>
