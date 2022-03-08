@@ -344,7 +344,7 @@ int main()
 			DisText += "#include \"ThreadHandlerLoginMessage.h\"																																			\n";
 			DisText += "#include \"ThreadHandlerChatMessage.h\"																																				\n";
 			DisText += "																																													\n";
-			DisText += "Dispatcher<TCPSession> Dis;																																							\n";
+			DisText += "Dispatcher<TCPSession> gDispatcher;																																							\n";
 			DisText += "																																													\n";
 			DisText += "template<typename MessageHandler, typename EMessageType>																																\n";
 			DisText += "void OnMessageProcess(std::shared_ptr<TCPSession> _Session, std::shared_ptr<GameServerMessage> _Message)																			\n";
@@ -364,12 +364,12 @@ int main()
 			DisText += "{																																													\n";
 			for (size_t i = 0; i < ClientMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(static_cast<uint32_t>(EMessageType::" + ClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ClientMessage[i].Name + "Message, " + ClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
+				DisText += "	gDispatcher.AddHandler(static_cast<uint32_t>(EMessageType::" + ClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ClientMessage[i].Name + "Message, " + ClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
 			}
 
 			for (size_t i = 0; i < ServerClientMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(static_cast<uint32_t>(EMessageType::" + ServerClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ServerClientMessage[i].Name + "Message, " + ServerClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
+				DisText += "	gDispatcher.AddHandler(static_cast<uint32_t>(EMessageType::" + ServerClientMessage[i].Name + "), std::bind(&OnMessageProcess<ThreadHandler" + ServerClientMessage[i].Name + "Message, " + ServerClientMessage[i].Name + "Message>, std::placeholders::_1, std::placeholders::_2));	\n";
 			}
 			DisText += "}																																													\n";
 

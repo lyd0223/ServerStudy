@@ -3,6 +3,8 @@
 
 #include "ClientCharacter.h"
 
+#include "DrawDebugHelpers.h"
+
 // Sets default values
 AClientCharacter::AClientCharacter()
 {
@@ -16,14 +18,15 @@ AClientCharacter::AClientCharacter()
 void AClientCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	DrawDebugCircle(,)
 }
 
 // Called every frame
 void AClientCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	
 }
 
 // Called to bind functionality to input

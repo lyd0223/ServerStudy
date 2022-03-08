@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "ClientCharacter.generated.h"
 
+DECLARE_DYNAMIC_DELEGATE(TestDelegate);
 UCLASS()
 class UNREALCLIENT_API AClientCharacter : public ACharacter
 {
