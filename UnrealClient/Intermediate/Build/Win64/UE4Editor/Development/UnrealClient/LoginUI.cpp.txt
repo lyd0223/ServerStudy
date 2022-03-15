@@ -1,5 +1,5 @@
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\Definitions.UnrealClient.h
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Source\UnrealClient\Login\LoginUI.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\Definitions.UnrealClient.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Source\UnrealClient\Login\LoginUI.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\UMG\Public\Blueprint/UserWidget.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\UMG\Public\Components/SlateWrapperTypes.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\SlateWrapperTypes.generated.h
@@ -99,20 +99,16 @@ C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\DynamicPropertyPath.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\WidgetBlueprintGeneratedClass.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\UserWidget.generated.h
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Intermediate\Build\Win64\UE4Editor\Inc\UnrealClient\LoginUI.generated.h
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Source\UnrealClient\Login\../Global/ClientGameInstance.h
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\string
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\xstring
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\iosfwd
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\cstdio
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\cwchar
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Inc\UnrealClient\LoginUI.generated.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Source\UnrealClient\Login\../Global/ClientGameInstance.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\vector
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\xmemory
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\limits
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\cfloat
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\cwchar
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\cstdio
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\isa_availability.h
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\cctype
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\vector
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Intermediate\Build\Win64\UE4Editor\Inc\UnrealClient\ClientGameInstance.generated.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Inc\UnrealClient\ClientGameInstance.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
@@ -122,7 +118,11 @@ C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStaticsTypes.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Source\UnrealClient/Global/ClientBlueprintFunctionLibrary.h
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Intermediate\Build\Win64\UE4Editor\Inc\UnrealClient\ClientBlueprintFunctionLibrary.generated.h
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Source\UnrealClient/Global/Message/GameServerMessages.h
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Source\UnrealClient\Global\Message\GameServerSerializer.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Source\UnrealClient/Global/ClientBlueprintFunctionLibrary.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\string
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\xstring
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\iosfwd
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\INCLUDE\cctype
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Inc\UnrealClient\ClientBlueprintFunctionLibrary.generated.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Source\UnrealClient/Global/Message/GameServerMessages.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Source\UnrealClient\Global\Message\GameServerSerializer.h

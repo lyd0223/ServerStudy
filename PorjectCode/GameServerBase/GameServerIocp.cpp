@@ -100,18 +100,22 @@ void GameServerIocp::Initialize(std::function<void(std::shared_ptr<GameServerIoc
 	Iocp_ = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, NULL, threadCount);
 
 
-	for (size_t i = 0; i < threadCount; i++)
+	for (unsigned int i = 0; i < threadCount; i++)
 	{
-		AddThread(_Func, _Time);
+		AddThread(_Func, _Time, i);
 	}
 }
 
-void GameServerIocp::AddThread(std::function<void(std::shared_ptr<GameServerIocpWorker>)> _Func, DWORD _Time)
+void GameServerIocp::AddThread(std::function<void(std::shared_ptr<GameServerIocpWorker>)> _Func, DWORD _Time, unsigned int _Order)
 {
 	iocpLock.lock();
 	std::shared_ptr<GameServerIocpWorker> NewWork = std::make_shared<GameServerIocpWorker>(Iocp_, threadWorkerList_.size(), _Time);
 	threadWorkerList_.push_back(NewWork);
-	threadList_.push_back(std::make_shared<GameServerThread>(_Func, NewWork));
+	
+	std::shared_ptr<GameServerThread> NewThread = std::make_shared<GameServerThread>(_Func, NewWork);
+	NewThread->SetThreadOrder(_Order);
+	threadList_.push_back(NewThread);
+	
 	iocpLock.unlock();
 }
 

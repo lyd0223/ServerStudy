@@ -2,10 +2,11 @@
 #include <vector>
 #include <string>
 
-class UNREALCLIENT_API GameServerSerializer
+class GameServerSerializer
 {
 public:
 	GameServerSerializer();
+	GameServerSerializer(const std::vector<unsigned char>& _Data);
 
 private:
 	unsigned int m_Offset;

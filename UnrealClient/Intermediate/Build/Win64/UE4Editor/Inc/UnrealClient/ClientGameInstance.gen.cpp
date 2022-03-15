@@ -40,7 +40,6 @@ void EmptyLinkFunctionForGeneratedCodeClientGameInstance() {}
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UClientGameInstance_Statics::Class_MetaDataParams[] = {
-		{ "Comment", "/**\n * \n */" },
 		{ "IncludePath", "Global/ClientGameInstance.h" },
 		{ "ModuleRelativePath", "Global/ClientGameInstance.h" },
 	};
@@ -72,7 +71,7 @@ void EmptyLinkFunctionForGeneratedCodeClientGameInstance() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UClientGameInstance, 3063997466);
+	IMPLEMENT_CLASS(UClientGameInstance, 3493093910);
 	template<> UNREALCLIENT_API UClass* StaticClass<UClientGameInstance>()
 	{
 		return UClientGameInstance::StaticClass();

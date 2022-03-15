@@ -1,7 +1,7 @@
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\Definitions.UnrealClient.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\Definitions.UnrealClient.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Source\UnrealClient/Login/LoginUI.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Source\UnrealClient/Login/LoginUI.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\UMG\Public\Blueprint/UserWidget.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\UMG\Public\Components/SlateWrapperTypes.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\SlateWrapperTypes.generated.h
@@ -101,4 +101,4 @@ C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\DynamicPropertyPath.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\WidgetBlueprintGeneratedClass.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\UserWidget.generated.h
-C:\Users\lyd02\OneDrive\Documents\GitHub\MyUnrealServer2\UnrealClient\Intermediate\Build\Win64\UE4Editor\Inc\UnrealClient\LoginUI.generated.h
+C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Inc\UnrealClient\LoginUI.generated.h

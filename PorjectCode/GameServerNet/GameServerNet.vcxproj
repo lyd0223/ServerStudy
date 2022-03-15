@@ -19,6 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DBConnecter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="DBManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="DNSEndPoint.h" />
     <ClInclude Include="EndPoint.h" />
     <ClInclude Include="Enums.h" />
@@ -42,6 +50,14 @@
     <ClInclude Include="TypeDefine.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DBConnecter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="DBManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="DNSEndPoint.cpp" />
     <ClCompile Include="EndPoint.cpp" />
     <ClCompile Include="GameServerOverlapped.cpp" />

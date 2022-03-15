@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\UnrealClient.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{827FA98D-5428-4CA4-B68E-668A1D01314A}</UniqueIdentifier>
+      <UniqueIdentifier>{06D7DC6F-383C-44BA-A5E0-9BBE5A945ADC}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UnrealClient.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\ActorLifeCycle.webp" />
     <None Include="..\..\GameFlowChart.png" />
     <Filter Include="Config">
-      <UniqueIdentifier>{FDC6893F-1483-4847-B8F9-0BA3D8D7612D}</UniqueIdentifier>
+      <UniqueIdentifier>{41AF76E9-8A81-4445-89FC-54E865C3D9CB}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -26,7 +26,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\UnrealClient">
-      <UniqueIdentifier>{CFEB74E5-FC89-4C07-B208-0BA450CFF5C2}</UniqueIdentifier>
+      <UniqueIdentifier>{457F2951-FC0C-4442-9995-FD4E2A92E35B}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UnrealClient\UnrealClient.Build.cs">
       <Filter>Source\UnrealClient</Filter>
@@ -38,7 +38,7 @@
       <Filter>Source\UnrealClient</Filter>
     </ClInclude>
     <Filter Include="Source\UnrealClient\Global">
-      <UniqueIdentifier>{8AA2F029-5DBC-48DA-B8B6-6516D1140EE5}</UniqueIdentifier>
+      <UniqueIdentifier>{F460C8B9-7927-4459-A21A-06CFB074E12D}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealClient\Global\ClientBlueprintFunctionLibrary.cpp">
       <Filter>Source\UnrealClient\Global</Filter>
@@ -59,7 +59,7 @@
       <Filter>Source\UnrealClient\Global</Filter>
     </ClInclude>
     <Filter Include="Source\UnrealClient\Global\Message">
-      <UniqueIdentifier>{1A2BF3CE-7A86-437D-B42F-2D795A22F90B}</UniqueIdentifier>
+      <UniqueIdentifier>{740A7522-4542-4D00-9760-B7818AB7CF5B}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealClient\Global\Message\GameServerMessages.cpp">
       <Filter>Source\UnrealClient\Global\Message</Filter>
@@ -74,7 +74,7 @@
       <Filter>Source\UnrealClient\Global\Message</Filter>
     </ClInclude>
     <Filter Include="Source\UnrealClient\Global\Message\ThreadMessages">
-      <UniqueIdentifier>{F8ADA919-852B-4AA0-970D-06568F69FC3E}</UniqueIdentifier>
+      <UniqueIdentifier>{090E1012-908B-40FC-8032-DD17AB50AF75}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealClient\Global\Message\ThreadMessages\ThreadLoginResultMessage.cpp">
       <Filter>Source\UnrealClient\Global\Message\ThreadMessages</Filter>
@@ -83,7 +83,7 @@
       <Filter>Source\UnrealClient\Global\Message\ThreadMessages</Filter>
     </ClInclude>
     <Filter Include="Source\UnrealClient\Login">
-      <UniqueIdentifier>{4D910594-8235-4476-B43E-EB490D440312}</UniqueIdentifier>
+      <UniqueIdentifier>{2C0E36F6-4A76-4F4E-9A10-386D362F6AE5}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealClient\Login\LoginGameMode.cpp">
       <Filter>Source\UnrealClient\Login</Filter>
@@ -98,7 +98,7 @@
       <Filter>Source\UnrealClient\Login</Filter>
     </ClInclude>
     <Filter Include="Source\UnrealClient\Main">
-      <UniqueIdentifier>{53704B20-C01A-4870-BFD5-2C6B215CCCA8}</UniqueIdentifier>
+      <UniqueIdentifier>{D7467B20-9B82-42FF-AB5D-A0967600C686}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealClient\Main\MainGameMode.cpp">
       <Filter>Source\UnrealClient\Main</Filter>
@@ -107,7 +107,7 @@
       <Filter>Source\UnrealClient\Main</Filter>
     </ClInclude>
     <Filter Include="Source\UnrealClient\Main\Character">
-      <UniqueIdentifier>{B829DE15-B389-4E68-9FE8-E9BB6A46EC5F}</UniqueIdentifier>
+      <UniqueIdentifier>{EC02B3D1-EFF9-4D51-9C30-9581873E3843}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealClient\Main\Character\ClientAnimInstance.cpp">
       <Filter>Source\UnrealClient\Main\Character</Filter>
@@ -122,7 +122,7 @@
       <Filter>Source\UnrealClient\Main\Character</Filter>
     </ClInclude>
     <Filter Include="Source\UnrealClient\Main\Character\Player">
-      <UniqueIdentifier>{6282FB3A-DA12-425F-8F56-F4E9664C53ED}</UniqueIdentifier>
+      <UniqueIdentifier>{C355176E-FA1A-42A5-BBC3-474F77B03D91}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UnrealClient\Main\Character\Player\PlayerClientCharacter.cpp">
       <Filter>Source\UnrealClient\Main\Character\Player</Filter>

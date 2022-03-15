@@ -9,14 +9,17 @@
 #include "Interfaces/IPv4/IPv4Endpoint.h"
 #include "GenericPlatform/GenericPlatformProcess.h"
 
-UnrealRecvThread::UnrealRecvThread(FSocket* _RecvSocket) 
+UnrealRecvThread::UnrealRecvThread(FSocket* _RecvSocket, TQueue<std::shared_ptr<Message>, EQueueMode::Spsc>* _MessageQueue) 
 {
 	if (nullptr == _RecvSocket)
 	{
 		UE_LOG(LogTemp, Error, TEXT("RecvSocket Error"));
 	}
 
+	
 	m_RecvSocket = _RecvSocket;
+	m_IsAppClosed = false;
+	m_MessageQueue = _MessageQueue;
 }
 
 bool UnrealRecvThread::FunctionTest() 
@@ -28,22 +31,38 @@ uint32 UnrealRecvThread::Run()
 {
 	UE_LOG(LogTemp, Log, TEXT("Recv Start"));
 
-	while (true)
+	while (!m_IsAppClosed)
 	{
 
 		std::vector<uint8> RecvData;
 		RecvData.resize(1024);
 		int32 RecvDataSize_ = 0;
 
+		//
 		if (false == m_RecvSocket->Recv(&RecvData[0], RecvData.size(), RecvDataSize_))
 		{
+			auto Result = m_RecvSocket->GetConnectionState();
+
+			switch(Result)
+			{
+			case ESocketConnectionState::SCS_NotConnected:
+				break;
+			case ESocketConnectionState::SCS_Connected:
+				{
+				}
+
+				break;
+			case ESocketConnectionState::SCS_ConnectionError:
+				break;
+				
+			}
 			break;
 		}
 
-		FString Text = FString(UTF8_TO_TCHAR(&RecvData[0]));
-
-		UE_LOG(LogTemp, Log, TEXT("%s"), *Text);
 		// 한글 데이터 테스트
+		// FString Text = FString(UTF8_TO_TCHAR(&RecvData[0]));
+		// UE_LOG(LogTemp, Log, TEXT("%s"), *Text);
+		MessageConverter
 	}
 
 	return 0;

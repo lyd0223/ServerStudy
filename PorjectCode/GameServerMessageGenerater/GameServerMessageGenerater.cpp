@@ -212,7 +212,12 @@ int main()
 	std::vector<MessageInfo> ServerClientMessage;
 
 
-	// 만들고 나면 다 단순복사가 됩니다 ok?
+	/*///////////////////////////////////////////////////////////////
+
+	.txt File Read
+
+	////////////////////////////////////////////////////////////////*/
+
 	{
 		GameServerDirectory LoadDir;
 		LoadDir.MoveParent("PorjectCode");
@@ -258,11 +263,16 @@ int main()
 	}
 
 
-	/////////////////////////////////// 서버 파일생성
+
+	/*///////////////////////////////////////////////////////////////
+
+	Generate Server Files
+
+	////////////////////////////////////////////////////////////////*/
 	{
 
 		{
-			///ENUMFILE CREATE////////////////////////////////////////////////////////////////////////////
+			///MessageTypeEnum.h Create
 			GameServerDirectory FileDir;
 			FileDir.MoveParent("PorjectCode");
 			FileDir.MoveChild("GameServerMessage");
@@ -282,11 +292,10 @@ int main()
 			std::string SavePath = FileDir.PathToPlusFileName("MessageTypeEnum.h");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
 			SaveFile.Write(EnumFileText.c_str(), EnumFileText.size());
-			///////////////////////////////////////////////////////////////////////////////
 		}
 
 		{
-			///CONVERT FILE CREATE////////////////////////////////////////////////////////////////////////////
+			///MessageConverter.cpp Create
 			GameServerDirectory FileDir;
 			FileDir.MoveParent("PorjectCode");
 			FileDir.MoveChild("GameServerMessage");
@@ -315,11 +324,10 @@ int main()
 			std::string SavePath = FileDir.PathToPlusFileName("MessageConverter.cpp");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
 			SaveFile.Write(ConvertFileText.c_str(), ConvertFileText.size());
-			///////////////////////////////////////////////////////////////////////////////
 		}
 
-		///Message Header////////////////////////////////////////////////////////////////////////////
 		{
+			///Message files Create
 			GameServerDirectory FileDir;
 			FileDir.MoveParent("PorjectCode");
 			FileDir.MoveChild("GameServerMessage");
@@ -328,9 +336,9 @@ int main()
 			MessageHeaderCreate(ServerMessage, FileDir.PathToPlusFileName("ServerToClient.h"));
 			MessageHeaderCreate(ServerClientMessage, FileDir.PathToPlusFileName("ServerAndClient.h"));
 		}
-		///////////////////////////////////////////////////////////////////////////////
+
 		{
-			///DisFile CREATE////////////////////////////////////////////////////////////////////////////
+			///ServerDispatcher.cpp Create
 			GameServerDirectory FileDir;
 			FileDir.MoveParent("PorjectCode");
 			FileDir.MoveChild("GameServerApp");
@@ -378,16 +386,16 @@ int main()
 			SaveFile.Write(DisText.c_str(), DisText.size());
 		}
 
-		// 여러분들은 이부분을 채워라
-		//std::string ServerToClientText;
-		//std::string ServerToClientText;
-		//std::string ServerToClientText;
-		//std::string ServerToClientText;
 	}
 
-	return 0;
 
-	/////////////////////////////////////////////////////////////// 언리얼로 수정 파일 이동.
+
+
+	/*/////////////////////////////////////////////////////////////// 
+	
+	Generate Client Files
+
+	////////////////////////////////////////////////////////////////*/
 	{
 		GameServerDirectory FileDir;
 		FileDir.MoveParent();
@@ -396,9 +404,11 @@ int main()
 		GameServerDirectory SaveDir;
 		SaveDir.MoveParent();
 		SaveDir.MoveParent();
-		SaveDir.MoveChild("UnrealClient\\Source\\UnrealClient\\Message");
+		SaveDir.MoveChild("UnrealClient\\Source\\UnrealClient\\Global\\Message");
 
 
+
+		//GameServerSerializer files Create
 		{
 			GameServerFile LoadFile = { FileDir.PathToPlusFileName("GameServerSerializer.h"), "rt" };
 			std::string Code = LoadFile.GetString();
@@ -418,6 +428,7 @@ int main()
 	}
 
 
+	//Message Files Create
 	{
 		GameServerDirectory FileDir;
 		FileDir.MoveParent();
@@ -426,7 +437,7 @@ int main()
 		GameServerDirectory SaveDir;
 		SaveDir.MoveParent();
 		SaveDir.MoveParent();
-		SaveDir.MoveChild("UnrealClient\\Source\\UnrealClient\\Message");
+		SaveDir.MoveChild("UnrealClient\\Source\\UnrealClient\\Global\\Message");
 
 
 		{
@@ -445,7 +456,7 @@ int main()
 		{
 			GameServerFile LoadFile = { FileDir.PathToPlusFileName("ServerToClient.h"), "rt" };
 			std::string Code = LoadFile.GetString();
-			std::string SavePath = SaveDir.PathToPlusFileName("ServerToClient.h");
+			std::string SavePath = SaveDir.PathToPlusFileName("Messages\\ServerToClient.h");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
 			SaveFile.Write(Code.c_str(), Code.size());
 		}
@@ -454,7 +465,7 @@ int main()
 		{
 			GameServerFile LoadFile = { FileDir.PathToPlusFileName("ClientToServer.h"), "rt" };
 			std::string Code = LoadFile.GetString();
-			std::string SavePath = SaveDir.PathToPlusFileName("ClientToServer.h");
+			std::string SavePath = SaveDir.PathToPlusFileName("Messages\\ClientToServer.h");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
 			SaveFile.Write(Code.c_str(), Code.size());
 		}
@@ -463,7 +474,7 @@ int main()
 		{
 			GameServerFile LoadFile = { FileDir.PathToPlusFileName("ServerAndClient.h"), "rt" };
 			std::string Code = LoadFile.GetString();
-			std::string SavePath = SaveDir.PathToPlusFileName("ServerAndClient.h");
+			std::string SavePath = SaveDir.PathToPlusFileName("Messages\\ServerAndClient.h");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
 			SaveFile.Write(Code.c_str(), Code.size());
 		}
@@ -554,14 +565,12 @@ int main()
 			}
 			DisText += "}																																													\n";
 
-			std::string SavePath = SaveDir.PathToPlusFileName("Handler\\HandlerHeader.h");
+			std::string SavePath = SaveDir.PathToPlusFileName("Handlers\\HandlerHeader.h");
 			GameServerFile SaveFile = GameServerFile{ SavePath, "wt" };
 			SaveFile.Write(DisText.c_str(), DisText.size());
 		}
-
-
-
-		return 0;
-
 	}
+
+
+	return 0;
 }

@@ -11,11 +11,17 @@ public:
 
 private: // Member Var
 	std::thread thread_;
+	static thread_local unsigned int Order_;
 
 public:
-	std::thread::id ThreadId() 
+	inline std::thread::id ThreadId() 
 	{
 		return thread_.get_id();
+	}
+
+	inline void SetThreadOrder(unsigned int _Order)
+	{
+		Order_ = _Order;
 	}
 
 public: // Default

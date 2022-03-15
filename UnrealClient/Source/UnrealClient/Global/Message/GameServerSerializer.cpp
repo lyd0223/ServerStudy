@@ -1,9 +1,16 @@
-﻿#include "GameServerSerializer.h"
+h"
+#include "GameServerSerializer.h"
 
 GameServerSerializer::GameServerSerializer()
 {
 	m_Offset = 0;
 	m_Data.resize(1024);
+}
+
+GameServerSerializer::GameServerSerializer(const std::vector<unsigned char>& _Data)
+{
+	m_Offset = 0;
+	m_Data = _Data;
 }
 
 void GameServerSerializer::Write(const void* _Data, unsigned int _Size)
@@ -22,7 +29,7 @@ void GameServerSerializer::Read(void* _Data, unsigned int _Size)
 void GameServerSerializer::operator<<(const std::string& _Value)
 {
 	operator<<(static_cast<int>(_Value.size()));
-	Write(reinterpret_cast<const void*>(&_Value[0]), _Value.size());
+	Write(reinterpret_cast<const void*>(&_Value[0]), static_cast<unsigned int>(_Value.size()));
 	
 }
 void GameServerSerializer::operator<<(const int _Value)

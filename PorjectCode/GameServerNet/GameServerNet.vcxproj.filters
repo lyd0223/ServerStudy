@@ -37,6 +37,12 @@
     <ClInclude Include="GameServerOverlapped.h">
       <Filter>IOCP</Filter>
     </ClInclude>
+    <ClInclude Include="DBManager.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DBConnecter.h">
+      <Filter>DB</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -69,6 +75,12 @@
     <ClCompile Include="GameServerOverlapped.cpp">
       <Filter>IOCP</Filter>
     </ClCompile>
+    <ClCompile Include="DBManager.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DBConnecter.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -88,6 +100,9 @@
     </Filter>
     <Filter Include="IOCP">
       <UniqueIdentifier>{1d25ff23-9d69-4849-83d5-7f725ff34ba3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DB">
+      <UniqueIdentifier>{43b3508d-6888-4614-903f-c982f83eec91}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -19,7 +19,6 @@ void AClientCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	DrawDebugCircle(,)
 }
 
 // Called every frame

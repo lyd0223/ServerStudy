@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "GameServerThread.h"
 
+thread_local unsigned int GameServerThread::Order_;
+
 void GameServerThread::ThreadNameSetting(const std::string& _Name)
 {
 	std::wstring String;
