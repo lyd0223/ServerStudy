@@ -565,7 +565,10 @@ int main()
 
 			DisText += "#pragma once																									  \n";
 			DisText += "#include \"CoreMinimal.h\"																						  \n";
-			DisText += "#include <functional>																						  \n";
+			DisText += "#include <functional>																								\n";
+			DisText += "#include \"../../ClientGameInstance.h\"																			\n";
+			DisText += "#include \"../Dispatcher.h\"																						\n";
+
 			DisText += "																												  \n";
 			for (size_t i = 0; i < ServerMessage.size(); i++)
 			{
@@ -595,12 +598,12 @@ int main()
 			DisText += "{														\n";
 			for (size_t i = 0; i < ServerMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(MessageId::" + ServerMessage[i].Name + ", std::bind(&OnMessageProcess<ThreadHandler" + ServerMessage[i].Name + "Message, " + ServerMessage[i].Name + "Message>, std::placeholders::_1, Inst, World));	\n";
+				DisText += "	Dis.AddHandler(EMessageType::" + ServerMessage[i].Name + ", std::bind(&OnMessageProcess<ThreadHandler" + ServerMessage[i].Name + "Message, " + ServerMessage[i].Name + "Message>, std::placeholders::_1, Inst, World));	\n";
 			}
 
 			for (size_t i = 0; i < ServerClientMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(MessageId::" + ServerClientMessage[i].Name + ", std::bind(&OnMessageProcess<ThreadHandler" + ServerClientMessage[i].Name + "Message, " + ServerClientMessage[i].Name + "Message>, std::placeholders::_1, Inst, World));	\n";
+				DisText += "	Dis.AddHandler(EMessageType::" + ServerClientMessage[i].Name + ", std::bind(&OnMessageProcess<ThreadHandler" + ServerClientMessage[i].Name + "Message, " + ServerClientMessage[i].Name + "Message>, std::placeholders::_1, Inst, World));	\n";
 			}
 			DisText += "}																																													\n";
 

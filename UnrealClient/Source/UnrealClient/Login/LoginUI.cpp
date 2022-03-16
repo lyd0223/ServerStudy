@@ -5,7 +5,8 @@
 #include "../Global/ClientGameInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "UnrealClient/Global/ClientBlueprintFunctionLibrary.h"
-#include "UnrealClient/Global/Message/GameServerMessages.h"
+#include "UnrealClient/Global/Message/ClientToServer.h"
+#include "UnrealClient/Global/Message/GameServerMessage.h"
 
 void ULoginUI::NativeConstruct()
 {
@@ -44,8 +45,9 @@ void ULoginUI::ServerLogin()
 	UClientBlueprintFunctionLibrary::FStringToUTF8(m_PWString, PW);
 
 	LoginMessage Msg;
-	Msg.SetID(ID);
-	Msg.SetPW(PW);
+	
+	Msg.m_ID = ID;
+	Msg.m_PW = PW;
 	GameServerSerializer Serializer;
 	Msg.Serialize(Serializer);
 	

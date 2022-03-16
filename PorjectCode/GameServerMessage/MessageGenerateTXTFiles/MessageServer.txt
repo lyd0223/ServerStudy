@@ -2,5 +2,3 @@
 ELoginResultType m_LoginResultType;
 
 |ServerDestroy-
-
-|MonsterCreate-

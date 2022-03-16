@@ -18,9 +18,6 @@ MessageConverter::MessageConverter(const std::vector<unsigned char>&_Buffer)
 	case EMessageType::ServerDestroy:
 		m_Message = std::make_shared<ServerDestroyMessage>();
 		break;
-	case EMessageType::MonsterCreate:
-		m_Message = std::make_shared<MonsterCreateMessage>();
-		break;
 	case EMessageType::Chat:
 		m_Message = std::make_shared<ChatMessage>();
 		break;

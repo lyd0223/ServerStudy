@@ -62,21 +62,12 @@ uint32 UnrealRecvThread::Run()
 		// 한글 데이터 테스트
 		// FString Text = FString(UTF8_TO_TCHAR(&RecvData[0]));
 		// UE_LOG(LogTemp, Log, TEXT("%s"), *Text);
-		MessageConverter
+		//MessageConverter
 	}
 
 	return 0;
 }
 
-void UnrealRecvThread::Stop() 
-{
-
-}
-
-void UnrealRecvThread::Exit()
-{
-
-}
 
 UClientGameInstance::UClientGameInstance()
 {
@@ -141,7 +132,7 @@ bool UClientGameInstance::ServerConnect(const FString& _IPString, const FString&
 	//TCP소켓 노딜레이옵션.
 	m_Socket->SetNoDelay(true);
 	
-	m_RecvThread = new UnrealRecvThread(m_Socket);
+	m_RecvThread = new UnrealRecvThread(m_Socket, &m_MessaeQueue);
 	m_ThreadRunalbe = FRunnableThread::Create(m_RecvThread, TEXT("Recv Thread"));
 	
 	return true;

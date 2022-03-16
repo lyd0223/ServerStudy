@@ -34,9 +34,9 @@
 /NODEFAULTLIB:"LIBCPD"
 /FUNCTIONPADMIN
 "C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UnrealClientEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
-"C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\ThreadLoginResultMessage.cpp.obj"
-"C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\GameServerMessages.cpp.obj"
+"C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\Dispatcher.cpp.obj"
 "C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\GameServerSerializer.cpp.obj"
+"C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\MessageConverter.cpp.obj"
 "C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\ClientBlueprintFunctionLibrary.cpp.obj"
 "C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\ClientGameInstance.cpp.obj"
 "C:\Users\lyd02\OneDrive\Documents\GitHub\ServerStudy\UnrealClient\Intermediate\Build\Win64\UE4Editor\Development\UnrealClient\FreeCameraPawn.cpp.obj"

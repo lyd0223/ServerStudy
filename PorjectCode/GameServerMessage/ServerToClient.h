@@ -66,33 +66,3 @@ public:
     }                                                           
 };                                                              
 
-class MonsterCreateMessage : public GameServerMessage                    
-{                                                               
-public:                                                         
-                                                                
-public:                                                         
-    MonsterCreateMessage()                                               
-        : GameServerMessage(EMessageType::MonsterCreate)                    
-    {                                                           
-                                                                
-    }                                                           
-                                                                
-    virtual ~MonsterCreateMessage() {}                                   
-                                                                
-    virtual int SizeCheck()                                     
-    {                                                           
-		return 0;    }                                                           
-                                                                
-    void Serialize(GameServerSerializer& _Serializer)           
-    {                                                           
-        GameServerMessage::Serialize(_Serializer);              
-
-    }                                                           
-                                                                
-    void DeSerialize(GameServerSerializer& _Serializer)         
-    {                                                           
-        GameServerMessage::DeSerialize(_Serializer);            
-
-    }                                                           
-};                                                              
-

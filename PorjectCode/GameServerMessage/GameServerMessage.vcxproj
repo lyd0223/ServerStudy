@@ -46,9 +46,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Info\MessageClient.txt" />
-    <Text Include="Info\MessageServer.txt" />
-    <Text Include="Info\MessageServerAndClient.txt" />
+    <Text Include="MessageGenerateTXTFiles\MessageClient.txt" />
+    <Text Include="MessageGenerateTXTFiles\MessageServer.txt" />
+    <Text Include="MessageGenerateTXTFiles\MessageServerAndClient.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

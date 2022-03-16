@@ -293,7 +293,9 @@
     <ClInclude Include="..\..\Source\UnrealClient\Global\Message\Dispatcher.h" />
     <ClInclude Include="..\..\Source\UnrealClient\Global\Message\GameServerMessage.h" />
     <ClInclude Include="..\..\Source\UnrealClient\Global\Message\Handlers\HandlerHeader.h" />
+    <ClInclude Include="..\..\Source\UnrealClient\Global\Message\Handlers\ThreadHandlerChatMessage.h" />
     <ClInclude Include="..\..\Source\UnrealClient\Global\Message\Handlers\ThreadHandlerLoginResultMessage.h" />
+    <ClInclude Include="..\..\Source\UnrealClient\Global\Message\Handlers\ThreadHandlerServerDestroyMessage.h" />
     <ClInclude Include="..\..\Source\UnrealClient\Global\Message\MessageConverter.h" />
     <ClInclude Include="..\..\Source\UnrealClient\Global\Message\Messages.h" />
     <ClInclude Include="..\..\Source\UnrealClient\Global\Message\MessageTypeEnum.h" />
