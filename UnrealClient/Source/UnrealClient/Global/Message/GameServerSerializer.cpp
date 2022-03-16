@@ -1,4 +1,3 @@
-h"
 #include "GameServerSerializer.h"
 
 GameServerSerializer::GameServerSerializer()

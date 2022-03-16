@@ -1,6 +1,8 @@
 #pragma once
 
+#include <memory>
 #include "Messages.h"
+
 /*
 Usage		:  MessageConvert
 Category	:  

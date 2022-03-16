@@ -158,8 +158,12 @@ std::string GameServerFile::GetString()
 	std::string AllString = std::string();
 
 	AllString.resize(GetFileSize());
-
-	Read(&AllString[0], AllString.size(), AllString.size());
+	
+	for (size_t i = 0; i < AllString.size(); i++)
+	{
+		Read(&AllString[i], 1, 1);
+	}
+	//Read(&AllString[0], AllString.size(), AllString.size());
 
 	while (AllString[AllString.size() - 1] == 0)
 	{
