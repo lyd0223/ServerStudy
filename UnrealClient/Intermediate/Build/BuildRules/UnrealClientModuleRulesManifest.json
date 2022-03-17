@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"C:\\Users\\lyd02\\OneDrive\\Documents\\GitHub\\ServerStudy\\UnrealClient\\Source\\UnrealClient\\UnrealClient.Build.cs",
-		"C:\\Users\\lyd02\\OneDrive\\Documents\\GitHub\\ServerStudy\\UnrealClient\\Source\\UnrealClient.Target.cs",
-		"C:\\Users\\lyd02\\OneDrive\\Documents\\GitHub\\ServerStudy\\UnrealClient\\Source\\UnrealClientEditor.Target.cs"
-	],
-	"EngineVersion": "4.27.2"
-}
