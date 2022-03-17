@@ -8,16 +8,16 @@
 #include "ThreadHandlerServerDestroyMessage.h"
 #include "ThreadHandlerChatMessage.h"
 																												  
-template<class MessageHandler, class EMessageType>															  
+template<class MessageHandler, class Message>															  
 void OnMessageProcess(std::shared_ptr<GameServerMessage> _Message, UClientGameInstance* _Inst, UWorld* _World)	  
 {																												  
-	std::shared_ptr<EMessageType> ConvertMessage = std::static_pointer_cast<EMessageType>(_Message);				  
+	std::shared_ptr<Message> ConvertMessage = std::static_pointer_cast<Message>(_Message);				  
 	if (nullptr == ConvertMessage)																				  
 	{																											  
 		return;																									  
 	}																											  
 																												  
-	MessageHandler Cmd = MessageHandler(ConvertMessage);														  
+	MessageHandler Cmd = MessageHandler(ConvertMessage);
 	Cmd.Init(_Inst, _World);																					  
 	Cmd.Start();																								  
 }																												  
