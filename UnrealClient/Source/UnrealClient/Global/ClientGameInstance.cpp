@@ -8,8 +8,9 @@
 #include "Interfaces/IPv4/IPv4Address.h"
 #include "Interfaces/IPv4/IPv4Endpoint.h"
 #include "GenericPlatform/GenericPlatformProcess.h"
+#include "Message/MessageConverter.h"
 
-UnrealRecvThread::UnrealRecvThread(FSocket* _RecvSocket, TQueue<std::shared_ptr<Message>, EQueueMode::Spsc>* _MessageQueue) 
+UnrealRecvThread::UnrealRecvThread(FSocket* _RecvSocket, TQueue<std::shared_ptr<GameServerMessage>>* _MessageQueue) 
 {
 	if (nullptr == _RecvSocket)
 	{
@@ -38,7 +39,7 @@ uint32 UnrealRecvThread::Run()
 		RecvData.resize(1024);
 		int32 RecvDataSize_ = 0;
 
-		//
+		//서버 접속체크
 		if (false == m_RecvSocket->Recv(&RecvData[0], RecvData.size(), RecvDataSize_))
 		{
 			auto Result = m_RecvSocket->GetConnectionState();
@@ -47,8 +48,15 @@ uint32 UnrealRecvThread::Run()
 			{
 			case ESocketConnectionState::SCS_NotConnected:
 				break;
-			case ESocketConnectionState::SCS_Connected:
+			case ESocketConnectionState::SCS_Connected: 
 				{
+					ServerDestroyMessage Message;
+					GameServerSerializer Serializer;
+					Message.Serialize(Serializer);
+
+					MessageConverter Converter = MessageConverter(Serializer.GetData());
+					m_MessageQueue->Enqueue(Converter.GetServerMessage());
+					return 0;
 				}
 
 				break;
@@ -59,29 +67,41 @@ uint32 UnrealRecvThread::Run()
 			break;
 		}
 
-		// 한글 데이터 테스트
-		// FString Text = FString(UTF8_TO_TCHAR(&RecvData[0]));
-		// UE_LOG(LogTemp, Log, TEXT("%s"), *Text);
-		//MessageConverter
+		MessageConverter Converter = MessageConverter(RecvData);
+		m_MessageQueue->Enqueue(Converter.GetServerMessage());
+
 	}
 
 	return 0;
 }
 
+void UnrealRecvThread::Close()
+{
+	m_IsAppClosed = true;
+}
 
 UClientGameInstance::UClientGameInstance()
 {
-	int a = 0;
+	m_IsClientMode = false;
 }
 
 UClientGameInstance::~UClientGameInstance() 
 {
-	int a = 0;
+	if(m_RecvThread)
+	{
+		m_RecvThread->Exit();
+		m_RecvThread = nullptr;
+	}
 }
 
 void UClientGameInstance::Close() 
 {
-	if (nullptr == m_Socket)
+	if(m_RecvThread)
+	{
+		m_RecvThread->Close();
+	}
+	
+	if (m_Socket == nullptr)
 	{
 		return;
 	}
@@ -92,7 +112,7 @@ void UClientGameInstance::Close()
 
 bool UClientGameInstance::ServerConnect(const FString& _IPString, const FString& _PORTString)
 {
-	if (false == IsThreadCheck())
+	if (IsThreadCheck() == false)
 	{
 		return false;
 	}
@@ -132,12 +152,13 @@ bool UClientGameInstance::ServerConnect(const FString& _IPString, const FString&
 	//TCP소켓 노딜레이옵션.
 	m_Socket->SetNoDelay(true);
 	
-	m_RecvThread = new UnrealRecvThread(m_Socket, &m_MessaeQueue);
+	m_RecvThread = new UnrealRecvThread(m_Socket, &m_MessageQueue);
 	m_ThreadRunalbe = FRunnableThread::Create(m_RecvThread, TEXT("Recv Thread"));
 	
 	return true;
 }
 
+//플랫폼에서 멀티프로세스를 지원하는지 체크하는 함수.
 bool UClientGameInstance::IsThreadCheck() 
 {
 	if (false == FPlatformProcess::SupportsMultithreading())
@@ -151,6 +172,10 @@ bool UClientGameInstance::IsThreadCheck()
 
 bool UClientGameInstance::Send(const std::vector<uint8>& _Data)
 {
+	if(m_Socket == nullptr)
+	{
+		return false;
+	}
 	if (0 == _Data.size())
 	{
 		return false;
@@ -159,4 +184,29 @@ bool UClientGameInstance::Send(const std::vector<uint8>& _Data)
 	int32 DataSendSize = 0;
 
 	return m_Socket->Send(&_Data[0], _Data.size(), DataSendSize);
+}
+
+//클라이언트모드 전용푸시함수.
+void UClientGameInstance::PushClientMessage(std::shared_ptr<GameServerMessage> _Message)
+{
+	if(m_IsClientMode)
+		return;
+
+	m_MessageQueue.Enqueue(_Message);
+}
+
+std::shared_ptr<GameServerMessage> UClientGameInstance::PopMessage()
+{
+	std::shared_ptr<GameServerMessage> Message;
+	m_MessageQueue.Dequeue(Message);
+
+	return Message;
+}
+
+
+void UClientGameInstance::FinishDestroy()
+{
+	Close();
+
+	Super::FinishDestroy();
 }
