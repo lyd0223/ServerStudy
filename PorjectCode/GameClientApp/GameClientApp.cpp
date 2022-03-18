@@ -109,5 +109,4 @@ int main()
 		int Result = send(SessionSocket, Buffer, sizeof(Buffer), 0);
 	}
 
-	_getch();
 }

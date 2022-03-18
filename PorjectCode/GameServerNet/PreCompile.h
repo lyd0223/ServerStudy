@@ -14,5 +14,5 @@
 
 
 
-#pragma comment(lib, "C:/Users/lyd02/OneDrive/Documents/GitHub/ServerStudy/PorjectCode/Thirdparty/mysql/bin/libmysql.lib")
+#pragma comment(lib, "../Thirdparty/mysql/dll/libmysql.lib") 
 #include "../Thirdparty/mysql/include/mysql.h"

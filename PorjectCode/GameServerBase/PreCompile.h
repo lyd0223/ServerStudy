@@ -39,3 +39,7 @@
 #pragma comment (lib, "mswsock.lib")
 
 
+#pragma comment(lib, "libmysql.lib")
+#include "../Thirdparty/mysql/include/mysql.h"
+
+

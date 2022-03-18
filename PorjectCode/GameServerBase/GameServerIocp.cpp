@@ -6,6 +6,9 @@ GameServerIocpWorker::GameServerIocpWorker(HANDLE _IocpHandle, size_t _Index, DW
 	: IocpHandle(_IocpHandle)
 	, Time(_time)
 	, Index(_Index)
+	, CompletionKey(NULL)
+	, NumberOfBytesTransferred(NULL)
+	, lpOverlapped(nullptr)
 {
 }
 
@@ -77,6 +80,7 @@ GameServerIocp::GameServerIocp()
 }
 
 GameServerIocp::GameServerIocp(GameServerIocp&& _Other) noexcept
+	: Iocp_(NULL)
 {
 
 }
@@ -100,7 +104,7 @@ void GameServerIocp::Initialize(std::function<void(std::shared_ptr<GameServerIoc
 	Iocp_ = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, NULL, threadCount);
 
 
-	for (unsigned int i = 0; i < threadCount; i++)
+	for (int i = 0; i < threadCount; i++)
 	{
 		AddThread(_Func, _Time, i);
 	}
