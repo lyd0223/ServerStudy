@@ -38,19 +38,24 @@ void ULoginUI::ServerConnect()
 void ULoginUI::ServerLogin() 
 {
 	UClientGameInstance* GameInst = Cast<UClientGameInstance>(GetGameInstance());
+
+	if(GameInst->GetIsClientMode())
+	{
+		return;		
+	}
 	
 	std::string ID;
 	std::string PW;
 	UClientBlueprintFunctionLibrary::FStringToUTF8(m_IDString, ID);
 	UClientBlueprintFunctionLibrary::FStringToUTF8(m_PWString, PW);
 
-	LoginMessage Msg;
+	LoginMessage Message;
+	Message.m_ID = ID;
+	Message.m_PW = PW;
 	
-	Msg.m_ID = ID;
-	Msg.m_PW = PW;
 	GameServerSerializer Serializer;
-	Msg.Serialize(Serializer);
-	
+	Message.Serialize(Serializer);
+
 	if (GameInst->Send(Serializer.GetData()))
 	{
 		
