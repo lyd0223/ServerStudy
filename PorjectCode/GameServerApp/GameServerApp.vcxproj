@@ -29,6 +29,7 @@
     </ClInclude>
     <ClInclude Include="PreCompile.h" />
     <ClInclude Include="ServerDispatcher.h" />
+    <ClInclude Include="ThreadHandlerChatMessage.h" />
     <ClInclude Include="ThreadHandlerLoginMessage.h">
       <SubType>
       </SubType>
@@ -55,6 +56,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ServerDispatcher.cpp" />
+    <ClCompile Include="ThreadHandlerChatMessage.cpp" />
     <ClCompile Include="ThreadHandlerLoginMessage.cpp">
       <SubType>
       </SubType>

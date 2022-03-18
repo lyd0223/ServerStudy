@@ -4,20 +4,11 @@
 
 ThreadHandlerLoginMessage::ThreadHandlerLoginMessage(std::shared_ptr<TCPSession> _TCPSession, std::shared_ptr<LoginMessage> _LoginMessage)
 {
-
-}
-
-ThreadHandlerLoginMessage::ThreadHandlerLoginMessage()
-{
-
+	m_TCPSession = _TCPSession;
+	m_LoginMessage = _LoginMessage;
 }
 
 ThreadHandlerLoginMessage::~ThreadHandlerLoginMessage()
-{
-
-}
-
-ThreadHandlerLoginMessage::ThreadHandlerLoginMessage(ThreadHandlerLoginMessage&& _Other) noexcept
 {
 
 }
@@ -33,7 +24,12 @@ void ThreadHandlerLoginMessage::Start()
 	
 }
 
-void ThreadHandlerLoginMessage::End()
+void ThreadHandlerLoginMessage::DBCheck()
+{
+
+}
+
+void ThreadHandlerLoginMessage::ResultSend()
 {
 
 }

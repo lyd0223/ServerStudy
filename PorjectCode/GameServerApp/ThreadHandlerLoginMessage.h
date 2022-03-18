@@ -5,7 +5,7 @@
 /*
 Usage		:  
 Category	:  
-Description :  
+Description :  로그인 패킷이 오면 처리해야할 동작을 구현.
 */
 
 class ThreadHandlerLoginMessage final 
@@ -23,11 +23,10 @@ private:
 
 public: //Default
 	ThreadHandlerLoginMessage(std::shared_ptr<TCPSession> _TCPSession, std::shared_ptr<LoginMessage> _LoginMessage);
-	ThreadHandlerLoginMessage();
 	~ThreadHandlerLoginMessage();
 
 	ThreadHandlerLoginMessage(const ThreadHandlerLoginMessage& _Other) = delete;
-	ThreadHandlerLoginMessage(ThreadHandlerLoginMessage&& _Other)		noexcept;
+	ThreadHandlerLoginMessage(ThreadHandlerLoginMessage&& _Other)		noexcept = delete;
 
 protected:
 	ThreadHandlerLoginMessage& operator=(const ThreadHandlerLoginMessage& _Other) = delete;
@@ -38,8 +37,9 @@ public:
 	//메시지 받았을때 실행하는 함수.
 	void Start();
 
-private: //Member Value
-	void End();
+private:
+	void DBCheck();
+	void ResultSend();
 	
 };
 

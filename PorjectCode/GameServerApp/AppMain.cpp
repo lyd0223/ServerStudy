@@ -24,7 +24,7 @@
 #include "DBQueue.h"
 #include "ServerDispatcher.h"
 
-#include "mysql/mysql.h"
+#include "../Thirdparty/mysql/include/mysql.h"
 
 int main() 
 {

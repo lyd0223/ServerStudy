@@ -580,10 +580,10 @@ int main()
 				DisText += "#include \"ThreadHandler" + ServerClientMessage[i].Name + "Message.h\"\n";
 			}
 			DisText += "																												  \n";
-			DisText += "template<class MessageHandler, class EMessageType>															  \n";
+			DisText += "template<class MessageHandler, class MessageType>															  \n";
 			DisText += "void OnMessageProcess(std::shared_ptr<GameServerMessage> _Message, UClientGameInstance* _Inst, UWorld* _World)	  \n";
 			DisText += "{																												  \n";
-			DisText += "	std::shared_ptr<EMessageType> ConvertMessage = std::static_pointer_cast<EMessageType>(_Message);				  \n";
+			DisText += "	std::shared_ptr<MessageType> ConvertMessage = std::static_pointer_cast<MessageType>(_Message);				  \n";
 			DisText += "	if (nullptr == ConvertMessage)																				  \n";
 			DisText += "	{																											  \n";
 			DisText += "		return;																									  \n";
