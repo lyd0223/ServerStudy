@@ -17,7 +17,7 @@ ThreadHandlerChatMessage::~ThreadHandlerChatMessage()
 void ThreadHandlerChatMessage::Start()
 {
 	
-
+	
 }
 
 

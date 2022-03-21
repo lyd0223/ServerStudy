@@ -65,20 +65,20 @@ int main()
 				[](PtrSTCPSession _S)
 				{
 					std::string LogText = std::to_string(static_cast<int>(_S->GetSocket()));
-					GameServerDebug::LogInfo(LogText + "접속자가 접속을 종료했습니다.");
+					GameServerDebug::LogInfo(LogText + "Unconnected.");
 				});
 
 
 			std::string LogText = std::to_string(static_cast<int>(_S->GetSocket()));
 
-			GameServerDebug::LogInfo(LogText + "접속자가 있습니다.");
+			GameServerDebug::LogInfo(LogText + "Connected.");
 		}
 	);
 
 	NewListener->BindQueue(NetQueue::GetQueue());
 	NewListener->StartAccept(10);
 	
-	GameServerDebug::LogInfo("서버 시작.");
+	GameServerDebug::LogInfo("Server Start.");
 
 	
 	while (1)
