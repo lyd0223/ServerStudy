@@ -27,6 +27,6 @@ public:
 	void operator<<(const unsigned int _Value);
 
 	void operator>>(std::string& _Value);
-	void operator>>(int _Value);
-	void operator>>(unsigned int _Value);
+	void operator>>(int& _Value);
+	void operator>>(unsigned int& _Value);
 };

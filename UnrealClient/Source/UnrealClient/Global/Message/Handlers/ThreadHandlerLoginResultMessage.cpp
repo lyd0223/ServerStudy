@@ -18,7 +18,7 @@ void ThreadHandlerLoginResultMessage::Start()
 {
 	if(m_LoginResultMessage->m_LoginResultType == ELoginResultType::OK)
 	{
-		UGameplayStatics::OpenLevel(m_World, TEXT("LoginLevel"));
+		UGameplayStatics::OpenLevel(m_World, TEXT("MainLevel"));
 		
 	}
 }

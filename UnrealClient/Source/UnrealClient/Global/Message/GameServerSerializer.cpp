@@ -47,11 +47,11 @@ void GameServerSerializer::operator>>(std::string& _Value)
 	_Value.resize(size);
 	Read(&_Value[0], size);
 }
-void GameServerSerializer::operator>>(int _Value)
+void GameServerSerializer::operator>>(int& _Value)
 {
 	Read(&_Value, sizeof(int));
 }
-void GameServerSerializer::operator>>(unsigned int _Value)
+void GameServerSerializer::operator>>(unsigned int& _Value)
 {
 	Read(&_Value, sizeof(unsigned int));
 }

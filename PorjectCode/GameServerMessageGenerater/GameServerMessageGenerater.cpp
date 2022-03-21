@@ -60,7 +60,8 @@ void DeSerializerTypeCheck(std::string& _Text, MemberInfo& _MemberInfo)
 	{
 		if (_MemberInfo.Type[0] == 'E')
 		{
-			_Text += "        _Serializer>>static_cast<int>(" + _MemberInfo.Name + ");\n";
+			_Text += "        int temp = static_cast<int>(" + _MemberInfo.Name +");\n";
+			_Text += "        _Serializer>>temp;\n";
 		}
 		else
 		{

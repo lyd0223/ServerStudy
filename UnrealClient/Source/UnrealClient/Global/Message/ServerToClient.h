@@ -31,7 +31,8 @@ public:
     void DeSerialize(GameServerSerializer& _Serializer)         
     {                                                           
         GameServerMessage::DeSerialize(_Serializer);            
-        _Serializer>>static_cast<int>(m_LoginResultType);
+        int temp = static_cast<int>(m_LoginResultType);
+        _Serializer>>temp;
 
     }                                                           
 };                                                              
