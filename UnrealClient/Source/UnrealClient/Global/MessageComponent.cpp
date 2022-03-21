@@ -43,6 +43,7 @@ void UMessageComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 	}
 
 	//매 틱마다 GameInstance가 갖고있는 MessageQueue에있는 메시지들을 처리하고, 메시지가 요구하는 실제 동작을시킨다.
+	UObject* owner = GetOwner();
 	UClientGameInstance* GameInstance = Cast<UClientGameInstance>(GetOwner()->GetGameInstance());
 	while(!GameInstance->IsEmptyMessage())
 	{
