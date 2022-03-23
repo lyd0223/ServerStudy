@@ -1,12 +1,11 @@
 #include "PreCompile.h"
 #include "DBQueue.h"
 #include <GameServerNet/DBConnecter.h>
-#include <GameServerBase/GameServerDebug.h>
 
 std::mutex gDBConnectionRock;
 
 //DB와 연결을 해주는 콜백함수.
-void DBConnectorInit(DBConnecter* _DBConnecter)
+void DBConnecterInitFunc(DBConnecter* _DBConnecter)
 {
 	//리얼커넥트 호출은 스레드에 안전하지않아 락을 걸었다.
 	gDBConnectionRock.lock();
@@ -49,7 +48,7 @@ DBQueue::DBQueue(DBQueue&& _Other) noexcept
 
 void DBQueue::Initialize()
 {
-	m_JobQueue.Initialize(GameServerQueue::WORK_TYPE::Default, 20, "DBThread");
+	m_JobQueue.LocalDataInitialize<DBConnecter>(GameServerQueue::WORK_TYPE::Default, 20, "DBThread", DBConnecterInitFunc);
 }
 
 void DBQueue::EnQueue(const std::function<void()>& _CallBack)

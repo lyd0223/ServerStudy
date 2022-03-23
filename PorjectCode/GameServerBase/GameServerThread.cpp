@@ -1,14 +1,12 @@
 #include "PreCompile.h"
 #include "GameServerThread.h"
+#include "GameServerDebug.h"
 
+thread_local std::string GameServerThread::Name_;
 thread_local unsigned int GameServerThread::Order_;
+thread_local const std::type_info* GameServerThread::LocalDataTypeInfo_ = nullptr;
+thread_local std::vector<char> GameServerThread::LocalData_;
 
-void GameServerThread::ThreadNameSetting(const std::string& _Name)
-{
-	std::wstring String;
-	String.assign(_Name.begin(), _Name.end());
-	HRESULT hr = SetThreadDescription(GetCurrentThread(), String.c_str());
-}
 
 GameServerThread::~GameServerThread() 
 {
@@ -24,3 +22,4 @@ void GameServerThread::join()
 {
 	thread_.join();
 }
+

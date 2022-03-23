@@ -94,10 +94,12 @@ protected:
 	GameServerIocp& operator=(GameServerIocp&& _Other) = delete;
 
 public:
+	//NetQueue IOCP Initilize
 	void Initialize(std::function<void(std::shared_ptr<GameServerIocpWorker>)> _Func, DWORD _Time, int threadCount);
-
+	
 public: // Member Function
 	void AddThread(std::function<void(std::shared_ptr<GameServerIocpWorker>)> _Func, DWORD _Time, unsigned int _Order);
+	
 	void Post(DWORD _byteSize, ULONG_PTR _Data);
 	bool Bind(HANDLE _Handle, ULONG_PTR _CompletionKey) const;
 };

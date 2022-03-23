@@ -5,6 +5,19 @@ Usage		:  DB연결담당
 Category	:  
 Description :  DB연결
 */
+
+
+
+class DBStmt
+{
+
+};
+
+class DBStmtResult
+{
+
+};
+
 class DBConnecter
 {
 public: //Default
@@ -32,7 +45,7 @@ public: //Get,Set function
 	}
 
 public:  //Member Function
-	std::unique_ptr<DBStmt> CreateDBStmt(std::string_view _DBQuery);
+	//std::unique_ptr<DBStmt> CreateDBStmt(std::string_view _DBQuery);
 	
 	bool Connect();
 	bool Connect(const std::string& _Host, const std::string& _ID, 
@@ -40,17 +53,4 @@ public:  //Member Function
 
 	std::string GetLastErrorStr();
 	
-};
-
-
-
-
-class DBStmt
-{
-
-};
-
-class DBStmtResult
-{
-
 };

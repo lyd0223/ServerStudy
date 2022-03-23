@@ -16,16 +16,27 @@ DBConnecter::~DBConnecter()
 {
 
 }
-
-DBConnecter::DBConnecter(DBConnecter&& _Other) noexcept
-{
-
-}
-
-std::unique_ptr<DBStmt> DBConnecter::CreateDBStmt(std::string_view _DBQuery)
-{
-
-}
+//
+//std::unique_ptr<DBStmt> DBConnecter::CreateDBStmt(std::string_view _DBQuery)
+//{
+//	// 프레그먼트 쿼리를 보내기 위한것으로 다이나믹 쿼리라면 이걸 만들필요가 없다.
+//	MYSQL_STMT* stmt = mysql_stmt_init(mysql_);
+//
+//	if (nullptr == stmt)
+//	{
+//		GameServerDebug::AssertDebugMsg("mysql Statememnt Create Error");
+//		return nullptr;
+//	}
+//
+//	if (0 != mysql_stmt_prepare(stmt, _Query.data(), static_cast<unsigned long>(_Query.length())))
+//	{
+//		mysql_stmt_close(stmt);
+//		GameServerDebug::AssertDebugMsg("mysql Statememnt mysql_stmt_prepare Error");
+//		return nullptr;
+//	}
+//
+//	return std::make_unique<DBStmt>(this, stmt, _Query);
+//}
 
 
 bool DBConnecter::Connect()
@@ -55,8 +66,8 @@ bool DBConnecter::Connect()
 	}
 
 	//Mysql 자동복구옵션
-	bool isConnected = true;
-	mysql_options(m_MYSQL, MYSQL_OPT_RECONNECT, &IsConnected);
+	bool ismysqlconnected = true;
+	mysql_options(m_MYSQL, MYSQL_OPT_RECONNECT, &ismysqlconnected);
 
 	return true;
 }

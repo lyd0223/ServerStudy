@@ -95,7 +95,7 @@ private: // Member Var
 
 private:
 	// IOCP_TYPE WorkType_;
-	GameServerIocp Iocp;
+	GameServerIocp m_Iocp;
 
 public: // Default
 	GameServerQueue();
@@ -123,7 +123,40 @@ private:
 public: // Member Function
 	void EnQueue(const std::function<void()>& _callback);
 	void Destroy();
+	//NetQueue에서 쓰는 Init
 	void Initialize(WORK_TYPE _Type, int threadCount, const std::string& _ThreadName);
+	//DBQueue에서 쓰는 Init
+	template<class LocalDataType>
+	void LocalDataInitialize(WORK_TYPE _Type, int threadCount, const std::string& _ThreadName,
+		std::function<void(LocalDataType*)> _InitFunction = nullptr)
+	{
+		SetWorkType(_Type);
+		m_Iocp.Initialize(std::bind(GameServerQueue::LocalDataFunc<LocalDataType>,
+			std::placeholders::_1, this, _ThreadName, _InitFunction), INFINITE, threadCount);
+	}
+
+	template<typename LocalDataType>
+	static void LocalDataFunc(std::shared_ptr<GameServerIocpWorker> _Work, GameServerQueue* _this, const std::string& _Name,
+		std::function<void(LocalDataType*)> _InitFunction)
+	{
+		if (_this == nullptr)
+		{
+			GameServerDebug::AssertDebugMsg("Queue LocalDataFunc Failed.");
+		}
+
+		GameServerThread::SetName(_Name + " " + std::to_string(_Work->GetIndex()));
+
+		LocalDataType* LocalData = GameServerThread::SetLocalData<LocalDataType>();
+
+		if (nullptr != _InitFunction)
+		{
+			_InitFunction(LocalData);
+		}
+
+		//Run기동하기전에 뭔가를 해주고 싶을수 있다.
+		_this->Run(_Work);
+	}
+
 	bool NetWorkBind(SOCKET _Socket, std::function<void(BOOL, DWORD, LPOVERLAPPED)> _callback) const;
 };
 

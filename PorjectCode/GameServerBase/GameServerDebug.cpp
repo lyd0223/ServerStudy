@@ -2,6 +2,7 @@
 #include "GameServerDebug.h"
 #include <Windows.h>
 #include <iostream>
+#include "GameServerIocp.h"
 
 const char* GameServerDebug::TypeText[4] = {"ERROR	: ", "WARNING	: ", "INFO	: ", "LASTERROR	: " };
 

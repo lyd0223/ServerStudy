@@ -10,7 +10,7 @@ void GameServerQueue::QueueFunction(std::shared_ptr<GameServerIocpWorker> _Work,
 		GameServerDebug::AssertDebugMsg("큐 쓰레드 생성에 실패했습니다.");
 	}
 
-	GameServerThread::ThreadNameSetting(_Name + " " + std::to_string(_Work->GetIndex()));
+	GameServerThread::SetName(_Name + " " + std::to_string(_Work->GetIndex()));
 
 	_this->Run(_Work);
 }
@@ -34,8 +34,9 @@ GameServerQueue::~GameServerQueue()
 void GameServerQueue::Initialize(WORK_TYPE _Type, int threadCount, const std::string& _ThreadName)
 {
 	SetWorkType(_Type);
-	Iocp.Initialize(std::bind(GameServerQueue::QueueFunction, std::placeholders::_1, this, _ThreadName), INFINITE, threadCount);
+	m_Iocp.Initialize(std::bind(GameServerQueue::QueueFunction, std::placeholders::_1, this, _ThreadName), INFINITE, threadCount);
 }
+
 
 GameServerQueue::GameServerQueue(GameServerQueue&& _Other) noexcept
 {
@@ -156,16 +157,16 @@ void GameServerQueue::EnQueue(const std::function<void()>& _callback)
 	// 정말 여러곳일수가 있죠
 	std::unique_ptr<PostJob> PostJobPtr = std::make_unique<PostJob>();
 	PostJobPtr->task_ = _callback;
-	Iocp.Post(static_cast<DWORD>(WORKMESSAGE_TYPE::MSG_POST), reinterpret_cast<ULONG_PTR>(PostJobPtr.get()));
+	m_Iocp.Post(static_cast<DWORD>(WORKMESSAGE_TYPE::MSG_POST), reinterpret_cast<ULONG_PTR>(PostJobPtr.get()));
 	PostJobPtr.release();
 }
 
 void GameServerQueue::Destroy()
 {
-	for (size_t i = 0; i < Iocp.GetThreadCount(); i++)
+	for (size_t i = 0; i < m_Iocp.GetThreadCount(); i++)
 	{
 		// 일반적인 default
-		Iocp.Post(static_cast<DWORD>(WORKMESSAGE_TYPE::MSG_DESTROY), 0);
+		m_Iocp.Post(static_cast<DWORD>(WORKMESSAGE_TYPE::MSG_DESTROY), 0);
 		Sleep(1);
 	}
 }
@@ -177,7 +178,7 @@ bool GameServerQueue::NetWorkBind(SOCKET _Socket, std::function<void(BOOL, DWORD
 
 	IocpOverlappedJobPool_.Push(OverJobPtr.get());
 
-	if (false == Iocp.Bind(reinterpret_cast<HANDLE>(_Socket), reinterpret_cast<ULONG_PTR>(OverJobPtr.get())))
+	if (false == m_Iocp.Bind(reinterpret_cast<HANDLE>(_Socket), reinterpret_cast<ULONG_PTR>(OverJobPtr.get())))
 	{
 		GameServerDebug::GetLastErrorPrint();
 		return false;

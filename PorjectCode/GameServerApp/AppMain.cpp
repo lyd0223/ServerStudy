@@ -29,10 +29,6 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	//DB
-	//MYSQL* Test = mysql_init(nullptr);
-	//MYSQL* Handle = mysql_real_connect(Test, "127.0.0.1", "root", "1234", "UnrealServer", 3306, nullptr, CLIENT_MULTI_RESULTS);
-	
 	NetQueue::Initialize();
 	DBQueue::Initialize();
 

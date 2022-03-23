@@ -2,7 +2,6 @@
 #include <string>
 #include <assert.h>
 #include <list>
-#include "GameServerIocp.h"
 
 enum class LOGTYPE
 {
@@ -15,6 +14,9 @@ enum class LOGTYPE
 // 용도 : 
 // 분류 :
 // 첨언 : 
+
+class GameServerIocp;
+class GameServerIocpWorker;
 class GameServerDebug
 {
 private:

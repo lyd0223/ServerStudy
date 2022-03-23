@@ -2,6 +2,8 @@
 #include "ThreadHandlerLoginMessage.h"
 #include <GameServerBase/GameServerDebug.h>
 #include <GameServerBase/GameServerString.h>
+#include "DBQueue.h"
+#include "NetQueue.h"
 
 ThreadHandlerLoginMessage::ThreadHandlerLoginMessage(std::shared_ptr<TCPSession> _TCPSession, std::shared_ptr<LoginMessage> _LoginMessage)
 {
@@ -23,22 +25,44 @@ void ThreadHandlerLoginMessage::Start()
 	}
 	m_LoginResultMessage.m_LoginResultType = ELoginResultType::OK;
 
-
-	ResultSend();
+	DBQueue::EnQueue(std::bind(&ThreadHandlerLoginMessage::DBCheck, shared_from_this()));
 	
 }
 
 void ThreadHandlerLoginMessage::DBCheck()
 {
+	//std::string Name = GameServerThread::GetName();
 
+	//UserTable_SelectIDToUserInfo SelectQuery(LoginMessage_->ID);
+	//SelectQuery.DoQuery();
+
+	//if (nullptr == SelectQuery.RowData)
+	//{
+	//	LoginResult_.Code = EGameServerCode::LoginError;
+	//}
+	//else
+	//{
+	//	LoginResult_.Code = EGameServerCode::OK;
+	//}
+
+	//UserTable_InsertUserInfo Query = UserTable_InsertUserInfo("kk", "kk");
+	//if (false == Query.DoQuery())
+	//{
+	//	int a = 0;
+	//}
+
+
+	// INSERT INTO `userver2`.`user` (`ID`, `PW`) VALUES('c', 'c');
+
+	NetQueue::EnQueue(std::bind(&ThreadHandlerLoginMessage::ResultSend, shared_from_this()));
 }
 
 void ThreadHandlerLoginMessage::ResultSend()
 {
-	//std::shared_ptr<GameServerUser> NewUser = std::make_shared<GameServerUser>();
-	//GameServerString::UTF8ToAnsi(LoginMessage_->ID, NewUser->ID);
-	//
-	//TCPSession_->SetLink(NewUser);
+	/*std::shared_ptr<GameServerUser> NewUser = std::make_shared<GameServerUser>();
+	GameServerString::UTF8ToAnsi(m_LoginMessage->m_ID, NewUser->ID);
+	
+	m_TCPSession->SetLink(NewUser);*/
 
 	GameServerSerializer Serializer;
 	m_LoginResultMessage.Serialize(Serializer);
