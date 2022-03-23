@@ -40,6 +40,9 @@
     <ClInclude Include="DBConnecter.h">
       <Filter>DB</Filter>
     </ClInclude>
+    <ClInclude Include="DBQuery.h">
+      <Filter>DB</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -73,6 +76,9 @@
       <Filter>IOCP</Filter>
     </ClCompile>
     <ClCompile Include="DBConnecter.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DBQuery.cpp">
       <Filter>DB</Filter>
     </ClCompile>
   </ItemGroup>

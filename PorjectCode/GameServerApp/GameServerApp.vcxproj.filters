@@ -25,7 +25,7 @@
     <ClInclude Include="GameServerUser.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="DBUserTable.h">
+    <ClInclude Include="DBUserInfoTable.h">
       <Filter>DBTable</Filter>
     </ClInclude>
   </ItemGroup>
@@ -55,7 +55,7 @@
     <ClCompile Include="GameServerUser.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
-    <ClCompile Include="DBUserTable.cpp">
+    <ClCompile Include="DBUserInfoTable.cpp">
       <Filter>DBTable</Filter>
     </ClCompile>
   </ItemGroup>

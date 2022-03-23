@@ -23,7 +23,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="DBUserTable.h">
+    <ClInclude Include="DBUserInfoTable.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -53,7 +53,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="DBUserTable.cpp">
+    <ClCompile Include="DBUserInfoTable.cpp">
       <SubType>
       </SubType>
     </ClCompile>
