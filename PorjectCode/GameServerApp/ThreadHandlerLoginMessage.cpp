@@ -31,7 +31,7 @@ void ThreadHandlerLoginMessage::Start()
 
 void ThreadHandlerLoginMessage::DBCheck()
 {
-	//std::string Name = GameServerThread::GetName();
+	std::string Name = GameServerThread::GetName();
 
 	//UserTable_SelectIDToUserInfo SelectQuery(LoginMessage_->ID);
 	//SelectQuery.DoQuery();

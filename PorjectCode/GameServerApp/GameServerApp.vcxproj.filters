@@ -22,6 +22,12 @@
     <ClInclude Include="ThreadHandlerChatMessage.h">
       <Filter>Messages\Login</Filter>
     </ClInclude>
+    <ClInclude Include="GameServerUser.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="DBUserTable.h">
+      <Filter>DBTable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -46,6 +52,12 @@
     <ClCompile Include="ThreadHandlerChatMessage.cpp">
       <Filter>Messages\Login</Filter>
     </ClCompile>
+    <ClCompile Include="GameServerUser.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="DBUserTable.cpp">
+      <Filter>DBTable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -59,6 +71,12 @@
     </Filter>
     <Filter Include="Queue">
       <UniqueIdentifier>{e9dd193b-8d1e-4e05-8bb4-e8cb341199a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{fab733e8-2570-4f58-9671-0da9ac1a24fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DBTable">
+      <UniqueIdentifier>{e22b24a7-e49c-4f6a-89d0-7e0b1b5634c7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
