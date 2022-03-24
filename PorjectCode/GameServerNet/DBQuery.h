@@ -1,5 +1,4 @@
 #pragma once
-#include "DBConnecter.h"
 
 /*
 Usage		:  DB에 날릴 Query들의 부모클래스.
@@ -8,6 +7,7 @@ Description :  DBQuery를 상속받은 모든 클래스는 무조건 DoQuery를 가져야함.
 			   추상클래스
 */
 
+class DBConnecter;
 class DBQuery
 {
 public: //Default

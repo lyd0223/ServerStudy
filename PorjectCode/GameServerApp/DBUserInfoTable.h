@@ -47,18 +47,32 @@ public: //Default
 
 private: //Member Value
 	static std::string m_TableName;
-	std::string m_QueryText;
 	
 public:  //Member Function
 };
 
 
-class UserTable_SelectIDQuery : public DBQuery, DBUserInfoTable
+class UserInfoTable_SelectIDQuery : public DBQuery, DBUserInfoTable
 {
+public:
 	std::string m_ID;
 	std::shared_ptr<DBUserInfoTableRow> m_RowData;
 
-	UserTable_SelectIDQuery(const std::string& _ID);
+public:
+	UserInfoTable_SelectIDQuery(const std::string& _ID);
 	bool DoQuery() override;
 	
+};
+
+
+class UserInfoTable_InsertUserInfoQuery : public DBQuery, DBUserInfoTable
+{
+public:
+	std::string m_ID;
+	std::string m_PW;
+
+public:
+	UserInfoTable_InsertUserInfoQuery(const std::string& _ID, const std::string& _PW);
+	bool DoQuery() override;
+
 };

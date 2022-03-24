@@ -25,10 +25,14 @@
 #include "ServerDispatcher.h"
 
 
+#define _CRTDBG_MAP_ALLOC
+
 int main() 
 {
+	//_CrtSetBreakAlloc(156);
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	
+
+	//_CrtDumpMemoryLeaks();
 	NetQueue::Initialize();
 	DBQueue::Initialize();
 
@@ -79,7 +83,8 @@ int main()
 	
 	while (1)
 	{
-		int a = 0;
+		if (_getch() == 'q')
+			break;
 	}
 
 	NetQueue::Destroy();

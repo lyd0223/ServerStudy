@@ -1,6 +1,6 @@
 #include "PreCompile.h"
 #include "DBQuery.h"
-
+#include "DBConnecter.h"
 
 DBQuery::DBQuery(const char* _QueryText)
 {

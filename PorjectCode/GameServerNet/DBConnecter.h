@@ -44,6 +44,11 @@ public: //Get,Set function
 		return m_MYSQL != nullptr;
 	}
 
+	inline MYSQL* GetMYSQL()
+	{
+		return m_MYSQL;
+	}
+
 public:  //Member Function
 	//std::unique_ptr<DBStmt> CreateDBStmt(std::string_view _DBQuery);
 	

@@ -4,6 +4,7 @@
 #include <GameServerBase/GameServerString.h>
 #include "DBQueue.h"
 #include "NetQueue.h"
+#include "DBUserInfoTable.h"
 
 ThreadHandlerLoginMessage::ThreadHandlerLoginMessage(std::shared_ptr<TCPSession> _TCPSession, std::shared_ptr<LoginMessage> _LoginMessage)
 {
@@ -33,8 +34,10 @@ void ThreadHandlerLoginMessage::DBCheck()
 {
 	std::string Name = GameServerThread::GetName();
 
-	//UserTable_SelectIDToUserInfo SelectQuery(LoginMessage_->ID);
+	//UserInfoTable_SelectIDQuery SelectQuery(m_LoginMessage->m_ID);
 	//SelectQuery.DoQuery();
+	UserInfoTable_InsertUserInfoQuery InsertUserInfoQuery("111", "");
+	InsertUserInfoQuery.DoQuery();
 
 	//if (nullptr == SelectQuery.RowData)
 	//{
