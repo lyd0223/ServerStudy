@@ -8,12 +8,17 @@
 #include "UnrealClient/Global/Message/ClientToServer.h"
 #include "UnrealClient/Global/Message/GameServerMessage.h"
 
+#include "SignInUIWidget.h"
+#include "PopUpUIWidget.h"
+
 void ULoginUI::NativeConstruct()
 {
 	m_ConnectStatusString = TEXT("UnConnected");
 	m_ConnectedIconColor = FLinearColor(1.000000f,0.122189f,0.082387f,1.000000f);
 	m_IPString = TEXT("127.0.0.1");
 	m_PortString = TEXT("30001");
+
+	m_SignInUIWidget = Cast<USignInUIWidget>(GetWidgetFromName("BP_SignInUI"));
 }
 
 void ULoginUI::ServerConnect()
@@ -72,4 +77,10 @@ void ULoginUI::SetTeacherIP()
 {
 	m_IPString = TEXT("127.0.0.1");
 	m_PortString = TEXT("30001");
+}
+
+
+void ULoginUI::SignInUIWidgetOpen()
+{
+	m_SignInUIWidget->SetVisibility(ESlateVisibility::SelfHitTestInvisible);
 }

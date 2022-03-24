@@ -30,7 +30,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConnectInfo")
 	FLinearColor m_ConnectedIconColor;    	
 
-
+	class USignInUIWidget* m_SignInUIWidget;
 
 public:
 	virtual void NativeConstruct() override;
@@ -46,5 +46,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Login|Login")
 	void ServerLogin();
-
+	
+	UFUNCTION(BlueprintCallable, Category="SignIn|SignIn")
+	void SignInUIWidgetOpen();
 };
