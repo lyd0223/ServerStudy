@@ -11,6 +11,7 @@ class DBConnecter;
 class DBQuery
 {
 public: //Default
+	DBQuery();
 	DBQuery(const char* _QueryText);
 	virtual ~DBQuery();
 

@@ -5,6 +5,7 @@
 #include <GameServerBase/GameServerDebug.h>
 
 #pragma comment(lib, "GameServerBase.lib")
+#include <functional>
 
 std::vector<std::function<void()>> FileSaveFuncList;
 
@@ -60,8 +61,9 @@ void DeSerializerTypeCheck(std::string& _Text, MemberInfo& _MemberInfo)
 	{
 		if (_MemberInfo.Type[0] == 'E')
 		{
-			_Text += "        int temp = static_cast<int>(" + _MemberInfo.Name +");\n";
+			_Text += "        int temp ;		\n";
 			_Text += "        _Serializer>>temp;\n";
+			_Text += "        " + _MemberInfo.Name + " = static_cast<" + _MemberInfo.Type + ">(temp); \n";
 		}
 		else
 		{
@@ -356,8 +358,15 @@ int main()
 			DisText += "#include \"ServerDispatcher.h\"																																						\n";
 			DisText += "#include <GameServerBase\\GameServerDebug.h>																																			\n";
 			DisText += "																																													\n";
-			DisText += "#include \"ThreadHandlerLoginMessage.h\"																																			\n";
-			DisText += "#include \"ThreadHandlerChatMessage.h\"																																				\n";
+			for (size_t i = 0; i < ClientMessage.size(); i++)
+			{
+				DisText += "#include \"ThreadHandler" + ClientMessage[i].Name + "Message.h\"\n";
+			}
+
+			for (size_t i = 0; i < ServerClientMessage.size(); i++)
+			{
+				DisText += "#include \"ThreadHandler" + ServerClientMessage[i].Name + "Message.h\"\n";
+			}																																			
 			DisText += "																																													\n";
 			DisText += "Dispatcher<TCPSession> gDispatcher;																																							\n";
 			DisText += "																																													\n";

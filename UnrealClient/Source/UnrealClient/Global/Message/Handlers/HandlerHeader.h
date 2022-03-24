@@ -6,6 +6,7 @@
 																												  
 #include "ThreadHandlerLoginResultMessage.h"
 #include "ThreadHandlerServerDestroyMessage.h"
+#include "ThreadHandlerSignInResultMessage.h"
 #include "ThreadHandlerChatMessage.h"
 																												  
 template<class MessageHandler, class MessageType>															  
@@ -26,5 +27,6 @@ void CheckHandler(Dispatcher& Dis, class UClientGameInstance* Inst, UWorld* Worl
 {														
 	Dis.AddHandler(EMessageType::LoginResult, std::bind(&OnMessageProcess<ThreadHandlerLoginResultMessage, LoginResultMessage>, std::placeholders::_1, Inst, World));	
 	Dis.AddHandler(EMessageType::ServerDestroy, std::bind(&OnMessageProcess<ThreadHandlerServerDestroyMessage, ServerDestroyMessage>, std::placeholders::_1, Inst, World));	
+	Dis.AddHandler(EMessageType::SignInResult, std::bind(&OnMessageProcess<ThreadHandlerSignInResultMessage, SignInResultMessage>, std::placeholders::_1, Inst, World));	
 	Dis.AddHandler(EMessageType::Chat, std::bind(&OnMessageProcess<ThreadHandlerChatMessage, ChatMessage>, std::placeholders::_1, Inst, World));	
 }																																													

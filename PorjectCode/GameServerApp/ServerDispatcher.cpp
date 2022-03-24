@@ -2,8 +2,9 @@
 #include "ServerDispatcher.h"																																						
 #include <GameServerBase\GameServerDebug.h>																																			
 																																													
-#include "ThreadHandlerLoginMessage.h"																																			
-#include "ThreadHandlerChatMessage.h"																																				
+#include "ThreadHandlerLoginMessage.h"
+#include "ThreadHandlerSignInMessage.h"
+#include "ThreadHandlerChatMessage.h"
 																																													
 Dispatcher<TCPSession> gDispatcher;																																							
 																																													
@@ -24,5 +25,6 @@ void OnMessageProcess(std::shared_ptr<TCPSession> _Session, std::shared_ptr<Game
 void DispatcherRegistration()																																						
 {																																													
 	gDispatcher.AddHandler(static_cast<uint32_t>(EMessageType::Login), std::bind(&OnMessageProcess<ThreadHandlerLoginMessage, LoginMessage>, std::placeholders::_1, std::placeholders::_2));	
+	gDispatcher.AddHandler(static_cast<uint32_t>(EMessageType::SignIn), std::bind(&OnMessageProcess<ThreadHandlerSignInMessage, SignInMessage>, std::placeholders::_1, std::placeholders::_2));	
 	gDispatcher.AddHandler(static_cast<uint32_t>(EMessageType::Chat), std::bind(&OnMessageProcess<ThreadHandlerChatMessage, ChatMessage>, std::placeholders::_1, std::placeholders::_2));	
 }																																													

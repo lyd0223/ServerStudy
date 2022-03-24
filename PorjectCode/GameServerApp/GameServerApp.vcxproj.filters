@@ -28,6 +28,9 @@
     <ClInclude Include="DBUserInfoTable.h">
       <Filter>DBTable</Filter>
     </ClInclude>
+    <ClInclude Include="ThreadHandlerSignInMessage.h">
+      <Filter>Messages\Login</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -57,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="DBUserInfoTable.cpp">
       <Filter>DBTable</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadHandlerSignInMessage.cpp">
+      <Filter>Messages\Login</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

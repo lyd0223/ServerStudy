@@ -2,6 +2,8 @@
 
 
 #include "LoginUI.h"
+
+#include "LoginGameMode.h"
 #include "../Global/ClientGameInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "UnrealClient/Global/ClientBlueprintFunctionLibrary.h"
@@ -19,6 +21,8 @@ void ULoginUI::NativeConstruct()
 	m_PortString = TEXT("30001");
 
 	m_SignInUIWidget = Cast<USignInUIWidget>(GetWidgetFromName("BP_SignInUI"));
+	m_PopUpUIWidget =  Cast<UPopUpUIWidget>(GetWidgetFromName("BP_PopUpUI"));
+
 }
 
 void ULoginUI::ServerConnect()
@@ -84,3 +88,28 @@ void ULoginUI::SignInUIWidgetOpen()
 {
 	m_SignInUIWidget->SetVisibility(ESlateVisibility::SelfHitTestInvisible);
 }
+
+void ULoginUI::SignInUIOff()
+{
+	m_SignInUIWidget->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void ULoginUI::SignInFailedPopUpOn()
+{
+	m_PopUpUIWidget->SetVisibility(ESlateVisibility::Visible);
+	m_PopUpUIWidget->SetPopUpMessageString(TEXT("SignIn Failed"));
+}
+
+void ULoginUI::SignInSucceedPopUpOn()
+{
+	m_PopUpUIWidget->SetVisibility(ESlateVisibility::Visible);
+	m_PopUpUIWidget->SetPopUpMessageString(TEXT("SignIn Succeed"));
+
+}
+
+void ULoginUI::LoginFailedPopUpOn()
+{
+	m_PopUpUIWidget->SetVisibility(ESlateVisibility::Visible);
+	m_PopUpUIWidget->SetPopUpMessageString(TEXT("Login Failed"));
+}
+

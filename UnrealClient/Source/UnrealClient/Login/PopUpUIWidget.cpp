@@ -8,3 +8,8 @@ void UPopUpUIWidget::NativeConstruct()
 {
 	
 }
+
+void UPopUpUIWidget::PopUpUIOff()
+{
+	this->SetVisibility(ESlateVisibility::Collapsed);
+}

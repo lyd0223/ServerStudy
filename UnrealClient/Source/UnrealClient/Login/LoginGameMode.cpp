@@ -8,6 +8,7 @@ ALoginGameMode::ALoginGameMode()
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bTickEvenWhenPaused = true;
 	PrimaryActorTick.TickGroup = TG_PrePhysics;
+
 }
 
 void ALoginGameMode::Tick(float _Delta)

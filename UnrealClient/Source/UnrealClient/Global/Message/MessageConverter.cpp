@@ -12,11 +12,17 @@ MessageConverter::MessageConverter(const std::vector<unsigned char>&_Buffer)
 	case EMessageType::Login:
 		m_Message = std::make_shared<LoginMessage>();
 		break;
+	case EMessageType::SignIn:
+		m_Message = std::make_shared<SignInMessage>();
+		break;
 	case EMessageType::LoginResult:
 		m_Message = std::make_shared<LoginResultMessage>();
 		break;
 	case EMessageType::ServerDestroy:
 		m_Message = std::make_shared<ServerDestroyMessage>();
+		break;
+	case EMessageType::SignInResult:
+		m_Message = std::make_shared<SignInResultMessage>();
 		break;
 	case EMessageType::Chat:
 		m_Message = std::make_shared<ChatMessage>();

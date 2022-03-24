@@ -30,11 +30,15 @@ bool UserInfoTable_SelectIDQuery::DoQuery()
 
 
 UserInfoTable_InsertUserInfoQuery::UserInfoTable_InsertUserInfoQuery(const std::string& _ID, const std::string& _PW)
-	:DBQuery("INSERT INTO unrealserver.userinfo (ID,PW) VALUES (12345, 1234);")
+	//:DBQuery("INSERT INTO unrealserver.userinfo (ID,PW) VALUES ('dddddd','1112');")
 {
+	std::string str = "INSERT INTO unrealserver.userinfo (ID,PW) VALUES ('" + _ID + "','" + _PW + "');";
+	//std::string str = "INSERT INTO unrealserver.userinfo (ID,PW) VALUES ('pppp','pppp');";
+	m_QueryText = _strdup(str.c_str());
 	m_ID = _ID;
 	m_PW = _PW;
 }
+
 bool UserInfoTable_InsertUserInfoQuery::DoQuery()
 {
 	int __stdcall result = mysql_query(m_DBConnecter->GetMYSQL(), m_QueryText);
@@ -42,6 +46,7 @@ bool UserInfoTable_InsertUserInfoQuery::DoQuery()
 	{
 		std::string ErrorStr = mysql_error(m_DBConnecter->GetMYSQL());
 		GameServerDebug::LogError("QueryError : " + ErrorStr);
+		return false;
 	}
 	return true;
 }

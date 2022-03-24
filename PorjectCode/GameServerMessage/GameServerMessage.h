@@ -10,6 +10,13 @@ enum class ELoginResultType
 	MAX
 };
 
+enum class ESignInResultType
+{
+	OK,
+	Error_DuplicateID,
+	Error_NonAvailableID,
+	MAX
+};
 class GameServerMessage
 {
 public:

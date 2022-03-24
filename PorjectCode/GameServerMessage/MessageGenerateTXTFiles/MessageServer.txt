@@ -2,3 +2,6 @@
 ELoginResultType m_LoginResultType;
 
 |ServerDestroy-
+
+|SignInResult-
+ESignInResultType m_SignInResultType;

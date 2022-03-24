@@ -11,26 +11,27 @@ class UNREALCLIENT_API ULoginUI : public UUserWidget
 {
 	GENERATED_BODY()
 	
-public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConnectInfo")
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConnectInfo", meta = (AllowPrivateAccess = "true"))
 	FString m_IPString;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConnectInfo")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConnectInfo", meta = (AllowPrivateAccess = "true"))
 	FString m_PortString;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConnectInfo")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConnectInfo", meta = (AllowPrivateAccess = "true"))
 	FString m_ConnectStatusString;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LoginInfo")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LoginInfo", meta = (AllowPrivateAccess = "true"))
 	FString m_IDString;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LoginInfo")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LoginInfo", meta = (AllowPrivateAccess = "true"))
 	FString m_PWString;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConnectInfo")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConnectInfo", meta = (AllowPrivateAccess = "true"))
 	FLinearColor m_ConnectedIconColor;    	
 
 	class USignInUIWidget* m_SignInUIWidget;
+	class UPopUpUIWidget* m_PopUpUIWidget;
 
 public:
 	virtual void NativeConstruct() override;
@@ -49,4 +50,11 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category="SignIn|SignIn")
 	void SignInUIWidgetOpen();
+
+	void SignInUIOff();
+
+	void SignInFailedPopUpOn();
+	void SignInSucceedPopUpOn();
+	void LoginFailedPopUpOn();
+	
 };
