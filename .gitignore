@@ -434,4 +434,4 @@ DerivedDataCache/*
 /UnrealClient/Saved
 
 
-!/ProjectCode/Thirdparty/lib/*
+!/PorjectCode/Thirdparty/lib/*
