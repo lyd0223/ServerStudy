@@ -638,12 +638,12 @@ int main()
 			DisText += "{														\n";
 			for (size_t i = 0; i < ServerMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(EMessageType::" + ServerMessage[i].Name + ", std::bind(&OnMessageProcess<" + ServerMessage[i].Name + "Message, " + ServerMessage[i].Name + "MessageHandler>, std::placeholders::_1, Inst, World));	\n";
+				DisText += "	Dis.AddHandler(EMessageType::" + ServerMessage[i].Name + ", std::bind(&OnMessageProcess<" + ServerMessage[i].Name + "MessageHandler, " + ServerMessage[i].Name + "Message>, std::placeholders::_1, Inst, World));	\n";
 			}
 
 			for (size_t i = 0; i < ServerClientMessage.size(); i++)
 			{
-				DisText += "	Dis.AddHandler(EMessageType::" + ServerClientMessage[i].Name + ", std::bind(&OnMessageProcess<" + ServerClientMessage[i].Name + "Message, " + ServerClientMessage[i].Name + "MessageHandler>, std::placeholders::_1, Inst, World));	\n";
+				DisText += "	Dis.AddHandler(EMessageType::" + ServerClientMessage[i].Name + ", std::bind(&OnMessageProcess<" + ServerClientMessage[i].Name + "MessageHandler, " + ServerClientMessage[i].Name + "Message>, std::placeholders::_1, Inst, World));	\n";
 			}
 			DisText += "}																																													\n";
 

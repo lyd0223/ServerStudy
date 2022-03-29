@@ -1,21 +1,21 @@
-﻿#include "ThreadHandlerSignInResultMessage.h"
+﻿#include "SignInResultMessageHandler.h"
 #include "../../ClientGameInstance.h"
 #include "UnrealClient/Login/LoginHUD.h"
 #include "UnrealClient/Login/LoginUI.h"
 
-ThreadHandlerSignInResultMessage::ThreadHandlerSignInResultMessage(
+SignInResultMessageHandler::SignInResultMessageHandler(
 	std::shared_ptr<SignInResultMessage> _SignInResultMessage)
 {
 	m_SignInResultMessage = _SignInResultMessage;
 }
 
-void ThreadHandlerSignInResultMessage::Init(UClientGameInstance* _GameInstance, UWorld* _World)
+void SignInResultMessageHandler::Init(UClientGameInstance* _GameInstance, UWorld* _World)
 {
 	m_GameInstance = _GameInstance;
 	m_World = _World;
 }
 
-void ThreadHandlerSignInResultMessage::Start()
+void SignInResultMessageHandler::Start()
 {
 	ESignInResultType SignInResultType = m_SignInResultMessage->m_SignInResultType;
 	switch (SignInResultType)
