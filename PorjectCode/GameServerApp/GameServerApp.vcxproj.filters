@@ -7,7 +7,7 @@
     <ClInclude Include="ThreadMessageBase.h">
       <Filter>Messages</Filter>
     </ClInclude>
-    <ClInclude Include="ThreadHandlerLoginMessage.h">
+    <ClInclude Include="LoginMessageHandler.h">
       <Filter>Messages\Login</Filter>
     </ClInclude>
     <ClInclude Include="DBQueue.h">
@@ -19,7 +19,7 @@
     <ClInclude Include="ServerDispatcher.h">
       <Filter>Messages</Filter>
     </ClInclude>
-    <ClInclude Include="ThreadHandlerChatMessage.h">
+    <ClInclude Include="ChatMessageHandler.h">
       <Filter>Messages\Login</Filter>
     </ClInclude>
     <ClInclude Include="GameServerUser.h">
@@ -28,7 +28,7 @@
     <ClInclude Include="DBUserInfoTable.h">
       <Filter>DBTable</Filter>
     </ClInclude>
-    <ClInclude Include="ThreadHandlerSignInMessage.h">
+    <ClInclude Include="SignInMessageHandler.h">
       <Filter>Messages\Login</Filter>
     </ClInclude>
   </ItemGroup>
@@ -40,7 +40,7 @@
     <ClCompile Include="ThreadMessageBase.cpp">
       <Filter>Messages</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadHandlerLoginMessage.cpp">
+    <ClCompile Include="LoginMessageHandler.cpp">
       <Filter>Messages\Login</Filter>
     </ClCompile>
     <ClCompile Include="DBQueue.cpp">
@@ -52,7 +52,7 @@
     <ClCompile Include="ServerDispatcher.cpp">
       <Filter>Messages</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadHandlerChatMessage.cpp">
+    <ClCompile Include="ChatMessageHandler.cpp">
       <Filter>Messages\Login</Filter>
     </ClCompile>
     <ClCompile Include="GameServerUser.cpp">
@@ -61,7 +61,7 @@
     <ClCompile Include="DBUserInfoTable.cpp">
       <Filter>DBTable</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadHandlerSignInMessage.cpp">
+    <ClCompile Include="SignInMessageHandler.cpp">
       <Filter>Messages\Login</Filter>
     </ClCompile>
   </ItemGroup>

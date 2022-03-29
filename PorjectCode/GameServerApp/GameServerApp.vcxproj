@@ -37,12 +37,12 @@
     </ClInclude>
     <ClInclude Include="PreCompile.h" />
     <ClInclude Include="ServerDispatcher.h" />
-    <ClInclude Include="ThreadHandlerChatMessage.h" />
-    <ClInclude Include="ThreadHandlerLoginMessage.h">
+    <ClInclude Include="ChatMessageHandler.h" />
+    <ClInclude Include="LoginMessageHandler.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ThreadHandlerSignInMessage.h" />
+    <ClInclude Include="SignInMessageHandler.h" />
     <ClInclude Include="ThreadMessageBase.h">
       <SubType>
       </SubType>
@@ -73,12 +73,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ServerDispatcher.cpp" />
-    <ClCompile Include="ThreadHandlerChatMessage.cpp" />
-    <ClCompile Include="ThreadHandlerLoginMessage.cpp">
+    <ClCompile Include="ChatMessageHandler.cpp" />
+    <ClCompile Include="LoginMessageHandler.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ThreadHandlerSignInMessage.cpp" />
+    <ClCompile Include="SignInMessageHandler.cpp" />
     <ClCompile Include="ThreadMessageBase.cpp">
       <SubType>
       </SubType>

@@ -1,23 +1,23 @@
 #include "PreCompile.h"
-#include "ThreadHandlerLoginMessage.h"
+#include "LoginMessageHandler.h"
 #include <GameServerBase/GameServerDebug.h>
 #include <GameServerBase/GameServerString.h>
 #include "DBQueue.h"
 #include "NetQueue.h"
 #include "DBUserInfoTable.h"
 
-ThreadHandlerLoginMessage::ThreadHandlerLoginMessage(std::shared_ptr<TCPSession> _TCPSession, std::shared_ptr<LoginMessage> _LoginMessage)
+LoginMessageHandler::LoginMessageHandler(std::shared_ptr<TCPSession> _TCPSession, std::shared_ptr<LoginMessage> _LoginMessage)
 {
 	m_TCPSession = _TCPSession;
 	m_LoginMessage = _LoginMessage;
 }
 
-ThreadHandlerLoginMessage::~ThreadHandlerLoginMessage()
+LoginMessageHandler::~LoginMessageHandler()
 {
 
 }
 
-void ThreadHandlerLoginMessage::Start()
+void LoginMessageHandler::Start()
 {
 	if (m_TCPSession == nullptr)
 	{
@@ -26,11 +26,11 @@ void ThreadHandlerLoginMessage::Start()
 	}
 	m_LoginResultMessage.m_LoginResultType = ELoginResultType::OK;
 
-	DBQueue::EnQueue(std::bind(&ThreadHandlerLoginMessage::DBCheck, shared_from_this()));
+	DBQueue::EnQueue(std::bind(&LoginMessageHandler::DBCheck, shared_from_this()));
 	
 }
 
-void ThreadHandlerLoginMessage::DBCheck()
+void LoginMessageHandler::DBCheck()
 {
 	std::string Name = GameServerThread::GetName();
 
@@ -57,10 +57,10 @@ void ThreadHandlerLoginMessage::DBCheck()
 
 	// INSERT INTO `userver2`.`user` (`ID`, `PW`) VALUES('c', 'c');
 
-	NetQueue::EnQueue(std::bind(&ThreadHandlerLoginMessage::ResultSend, shared_from_this()));
+	NetQueue::EnQueue(std::bind(&LoginMessageHandler::ResultSend, shared_from_this()));
 }
 
-void ThreadHandlerLoginMessage::ResultSend()
+void LoginMessageHandler::ResultSend()
 {
 	/*std::shared_ptr<GameServerUser> NewUser = std::make_shared<GameServerUser>();
 	GameServerString::UTF8ToAnsi(m_LoginMessage->m_ID, NewUser->ID);

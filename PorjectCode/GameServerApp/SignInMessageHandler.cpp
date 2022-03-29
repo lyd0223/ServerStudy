@@ -1,5 +1,5 @@
 #include "PreCompile.h"
-#include "ThreadHandlerSignInMessage.h"
+#include "SignInMessageHandler.h"
 
 
 #include <GameServerBase/GameServerDebug.h>
@@ -8,18 +8,18 @@
 #include "NetQueue.h"
 #include "DBUserInfoTable.h"
 
-ThreadHandlerSignInMessage::ThreadHandlerSignInMessage(std::shared_ptr<TCPSession> _TCPSession, std::shared_ptr<SignInMessage> _SignInMessage)
+SignInMessageHandler::SignInMessageHandler(std::shared_ptr<TCPSession> _TCPSession, std::shared_ptr<SignInMessage> _SignInMessage)
 {
 	m_TCPSession = _TCPSession;
 	m_SignInMessage = _SignInMessage;
 }
 
-ThreadHandlerSignInMessage::~ThreadHandlerSignInMessage()
+SignInMessageHandler::~SignInMessageHandler()
 {
 
 }
 
-void ThreadHandlerSignInMessage::Start()
+void SignInMessageHandler::Start()
 {
 	if (m_TCPSession == nullptr)
 	{
@@ -28,11 +28,11 @@ void ThreadHandlerSignInMessage::Start()
 	}
 	m_SignInResultMessage.m_SignInResultType = ESignInResultType::MAX;
 
-	DBQueue::EnQueue(std::bind(&ThreadHandlerSignInMessage::DBCheck, shared_from_this()));
+	DBQueue::EnQueue(std::bind(&SignInMessageHandler::DBCheck, shared_from_this()));
 
 }
 
-void ThreadHandlerSignInMessage::DBCheck()
+void SignInMessageHandler::DBCheck()
 {
 	std::string Name = GameServerThread::GetName();
 	
@@ -41,10 +41,10 @@ void ThreadHandlerSignInMessage::DBCheck()
 	int CheckResult = InsertUserInfoQuery.DoQuery();
 	m_SignInResultMessage.m_SignInResultType = CheckResult == true ? ESignInResultType::OK : ESignInResultType::Error_NonAvailableID;
 
-	NetQueue::EnQueue(std::bind(&ThreadHandlerSignInMessage::ResultSend, shared_from_this()));
+	NetQueue::EnQueue(std::bind(&SignInMessageHandler::ResultSend, shared_from_this()));
 }
 
-void ThreadHandlerSignInMessage::ResultSend()
+void SignInMessageHandler::ResultSend()
 {
 	/*std::shared_ptr<GameServerUser> NewUser = std::make_shared<GameServerUser>();
 	GameServerString::UTF8ToAnsi(m_LoginMessage->m_ID, NewUser->ID);
