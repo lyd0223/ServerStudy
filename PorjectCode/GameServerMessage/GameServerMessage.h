@@ -1,22 +1,8 @@
 ﻿#pragma once
 #include "MessageTypeEnum.h"
+#include "ContentsEnum.h"
 #include <GameServerBase/GameServerSerializer.h>
 
-
-enum class ELoginResultType
-{
-	OK,
-	Error,
-	MAX
-};
-
-enum class ESignInResultType
-{
-	OK,
-	Error_DuplicateID,
-	Error_NonAvailableID,
-	MAX
-};
 class GameServerMessage
 {
 public:

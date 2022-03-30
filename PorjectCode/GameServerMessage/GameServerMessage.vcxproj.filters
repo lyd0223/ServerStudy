@@ -20,6 +20,7 @@
     <ClInclude Include="MessageTypeEnum.h" />
     <ClInclude Include="Messages.h" />
     <ClInclude Include="Dispatcher.h" />
+    <ClInclude Include="ContentsEnum.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
